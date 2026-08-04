@@ -34,3 +34,15 @@
   width: 20px;
   height: 20px;
 }
+
+/* Home — feature strip */
+#shopify-section-feature_strip_orniva {
+  background: var(--orniva-color-bg-alt);
+  border-block: 1px solid var(--orniva-color-border);
+}
+
+#shopify-section-feature_strip_orniva .header-logo__tagline,
+#shopify-section-feature_strip_orniva p {
+  font-family: var(--orniva-font-sans);
+  color: var(--orniva-color-text-light);
+}
