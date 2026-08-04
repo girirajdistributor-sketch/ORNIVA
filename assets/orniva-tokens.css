@@ -46,3 +46,25 @@
   font-family: var(--orniva-font-sans);
   color: var(--orniva-color-text-light);
 }
+
+/* Collection page */
+.results-list.product-grid-container {
+  background: var(--orniva-color-bg);
+}
+
+.facets__summary,
+.facets__label {
+  font-family: var(--orniva-font-sans);
+  color: var(--orniva-color-text);
+}
+
+.facets__clear-all-link,
+.facets__clear-all {
+  color: var(--orniva-color-gold);
+}
+
+.product-grid .card-information__text,
+.product-grid .price {
+  font-family: var(--orniva-font-sans);
+  color: var(--orniva-color-text);
+}
