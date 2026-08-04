@@ -68,3 +68,19 @@
   font-family: var(--orniva-font-sans);
   color: var(--orniva-color-text);
 }
+
+/* Product page */
+.product-information__grid h1 {
+  font-family: var(--orniva-font-serif);
+  color: var(--orniva-color-black);
+}
+
+.product-information__grid .price {
+  color: var(--orniva-color-gold);
+  font-weight: 600;
+}
+
+.product-information__grid button[type="submit"] {
+  background: var(--orniva-color-gold);
+  border-color: var(--orniva-color-gold);
+}
