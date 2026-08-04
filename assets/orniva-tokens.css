@@ -14,13 +14,6 @@
 }
 
 /* Header */
-.header-logo {
-  font-family: var(--orniva-font-serif);
-  color: var(--orniva-color-gold) !important;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-}
-
 .menu-list__link:hover,
 .menu-list__link[aria-current="page"] {
   color: var(--orniva-color-gold) !important;
@@ -41,29 +34,33 @@
   border-block: 1px solid var(--orniva-color-border);
 }
 
-#shopify-section-feature_strip_orniva .header-logo__tagline,
+#shopify-section-feature_strip_orniva h3 {
+  font-family: var(--orniva-font-serif);
+  color: var(--orniva-color-black);
+}
+
 #shopify-section-feature_strip_orniva p {
   font-family: var(--orniva-font-sans);
   color: var(--orniva-color-text-light);
 }
 
 /* Collection page */
-.results-list.product-grid-container {
+results-list.product-grid-container {
   background: var(--orniva-color-bg);
 }
 
 .facets__summary,
 .facets__label {
   font-family: var(--orniva-font-sans);
-  color: var(--orniva-color-text);
+  color: var(--orniva-color-text) !important;
 }
 
 .facets__clear-all-link,
 .facets__clear-all {
-  color: var(--orniva-color-gold);
+  color: var(--orniva-color-gold) !important;
 }
 
-.product-grid .card-information__text,
+.product-grid .product-card .text-block,
 .product-grid .price {
   font-family: var(--orniva-font-sans);
   color: var(--orniva-color-text);

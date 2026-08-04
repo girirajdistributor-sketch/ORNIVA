@@ -16,11 +16,37 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<h1>Shine Every Day</h1><p>Timeless Designs, Unmatched You.</p>",
+            "text": "<h1>Shine Every Day</h1>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
-            "type_preset": "h2",
+            "type_preset": "h1",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "{{ settings.color_palette.background }}",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_subtitle_orniva": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "<p>Timeless Designs, Unmatched You.</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "paragraph",
             "font": "var(--font-body--family)",
             "font_size": "1rem",
             "line_height": "normal",
@@ -59,6 +85,7 @@
       },
       "block_order": [
         "text_YLPk4p",
+        "text_subtitle_orniva",
         "button_H9gpTf"
       ],
       "name": "t:names.hero",
