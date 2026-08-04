@@ -16,37 +16,11 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<h1>Shine Every Day</h1>",
+            "text": "<p>Browse our latest products</p>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
-            "type_preset": "h1",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "text_color": "{{ settings.color_palette.background }}",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "text_subtitle_orniva": {
-          "type": "text",
-          "name": "t:names.heading",
-          "settings": {
-            "text": "<p>Timeless Designs, Unmatched You.</p>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "paragraph",
+            "type_preset": "h2",
             "font": "var(--font-body--family)",
             "font_size": "1rem",
             "line_height": "normal",
@@ -68,7 +42,7 @@
           "type": "button",
           "name": "t:names.button",
           "settings": {
-            "label": "Shop Now",
+            "label": "Shop all",
             "link": "shopify://collections/all",
             "open_in_new_tab": false,
             "style_class": "button-custom",
@@ -85,7 +59,6 @@
       },
       "block_order": [
         "text_YLPk4p",
-        "text_subtitle_orniva",
         "button_H9gpTf"
       ],
       "name": "t:names.hero",
@@ -113,224 +86,6 @@
         "reflection_opacity": 75,
         "padding-block-start": 100,
         "padding-block-end": 72
-      }
-    },
-    "feature_strip_orniva": {
-      "type": "section",
-      "name": "t:names.section",
-      "blocks": {
-        "group_premium_quality": {
-          "type": "group",
-          "name": "t:names.group",
-          "settings": {
-            "content_direction": "column",
-            "horizontal_alignment_flex_direction_column": "center",
-            "vertical_alignment_flex_direction_column": "center",
-            "gap": 12,
-            "width": "fill"
-          },
-          "blocks": {
-            "icon_premium_quality": {
-              "type": "icon",
-              "name": "t:names.icon",
-              "settings": {
-                "icon": "star",
-                "width": 32
-              },
-              "blocks": {}
-            },
-            "text_premium_quality_title": {
-              "type": "text",
-              "name": "t:names.heading",
-              "settings": {
-                "text": "<h3>Premium Quality</h3>",
-                "width": "100%",
-                "alignment": "center",
-                "type_preset": "h3"
-              },
-              "blocks": {}
-            },
-            "text_premium_quality_desc": {
-              "type": "text",
-              "name": "t:names.text",
-              "settings": {
-                "text": "<p>Finest craftsmanship &amp; materials</p>",
-                "width": "100%",
-                "alignment": "center",
-                "type_preset": "paragraph"
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "icon_premium_quality",
-            "text_premium_quality_title",
-            "text_premium_quality_desc"
-          ]
-        },
-        "group_tarnish_free": {
-          "type": "group",
-          "name": "t:names.group",
-          "settings": {
-            "content_direction": "column",
-            "horizontal_alignment_flex_direction_column": "center",
-            "vertical_alignment_flex_direction_column": "center",
-            "gap": 12,
-            "width": "fill"
-          },
-          "blocks": {
-            "icon_tarnish_free": {
-              "type": "icon",
-              "name": "t:names.icon",
-              "settings": {
-                "icon": "lock",
-                "width": 32
-              },
-              "blocks": {}
-            },
-            "text_tarnish_free_title": {
-              "type": "text",
-              "name": "t:names.heading",
-              "settings": {
-                "text": "<h3>Tarnish Free</h3>",
-                "width": "100%",
-                "alignment": "center",
-                "type_preset": "h3"
-              },
-              "blocks": {}
-            },
-            "text_tarnish_free_desc": {
-              "type": "text",
-              "name": "t:names.text",
-              "settings": {
-                "text": "<p>Long lasting shine</p>",
-                "width": "100%",
-                "alignment": "center",
-                "type_preset": "paragraph"
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "icon_tarnish_free",
-            "text_tarnish_free_title",
-            "text_tarnish_free_desc"
-          ]
-        },
-        "group_beautiful_packaging": {
-          "type": "group",
-          "name": "t:names.group",
-          "settings": {
-            "content_direction": "column",
-            "horizontal_alignment_flex_direction_column": "center",
-            "vertical_alignment_flex_direction_column": "center",
-            "gap": 12,
-            "width": "fill"
-          },
-          "blocks": {
-            "icon_beautiful_packaging": {
-              "type": "icon",
-              "name": "t:names.icon",
-              "settings": {
-                "icon": "box",
-                "width": 32
-              },
-              "blocks": {}
-            },
-            "text_beautiful_packaging_title": {
-              "type": "text",
-              "name": "t:names.heading",
-              "settings": {
-                "text": "<h3>Beautiful Packaging</h3>",
-                "width": "100%",
-                "alignment": "center",
-                "type_preset": "h3"
-              },
-              "blocks": {}
-            },
-            "text_beautiful_packaging_desc": {
-              "type": "text",
-              "name": "t:names.text",
-              "settings": {
-                "text": "<p>Perfect for gifting</p>",
-                "width": "100%",
-                "alignment": "center",
-                "type_preset": "paragraph"
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "icon_beautiful_packaging",
-            "text_beautiful_packaging_title",
-            "text_beautiful_packaging_desc"
-          ]
-        },
-        "group_fast_delivery": {
-          "type": "group",
-          "name": "t:names.group",
-          "settings": {
-            "content_direction": "column",
-            "horizontal_alignment_flex_direction_column": "center",
-            "vertical_alignment_flex_direction_column": "center",
-            "gap": 12,
-            "width": "fill"
-          },
-          "blocks": {
-            "icon_fast_delivery": {
-              "type": "icon",
-              "name": "t:names.icon",
-              "settings": {
-                "icon": "truck",
-                "width": 32
-              },
-              "blocks": {}
-            },
-            "text_fast_delivery_title": {
-              "type": "text",
-              "name": "t:names.heading",
-              "settings": {
-                "text": "<h3>Fast Delivery</h3>",
-                "width": "100%",
-                "alignment": "center",
-                "type_preset": "h3"
-              },
-              "blocks": {}
-            },
-            "text_fast_delivery_desc": {
-              "type": "text",
-              "name": "t:names.text",
-              "settings": {
-                "text": "<p>Across India</p>",
-                "width": "100%",
-                "alignment": "center",
-                "type_preset": "paragraph"
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "icon_fast_delivery",
-            "text_fast_delivery_title",
-            "text_fast_delivery_desc"
-          ]
-        }
-      },
-      "block_order": [
-        "group_premium_quality",
-        "group_tarnish_free",
-        "group_beautiful_packaging",
-        "group_fast_delivery"
-      ],
-      "settings": {
-        "content_direction": "row",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "space-between",
-        "vertical_alignment": "center",
-        "gap": 32,
-        "section_width": "page-width",
-        "padding-block-start": 48,
-        "padding-block-end": 48
       }
     },
     "product_list_fa6P9H": {
@@ -522,7 +277,6 @@
   },
   "order": [
     "hero_jVaWmY",
-    "feature_strip_orniva",
     "product_list_fa6P9H"
   ]
 }
