@@ -17,19 +17,26 @@
         "announcement_BxgCk9": {
           "type": "_announcement",
           "settings": {
-            "text": "Welcome to our store",
-            "link": "",
-            "font": "var(--font-subheading--family)",
-            "font_size": "0.75rem",
-            "weight": "",
-            "letter_spacing": "normal",
-            "case": "none"
-          },
-          "blocks": {}
+            "text": "✦ Shine Every Day ✦"
+          }
+        },
+        "announcement_free_ship": {
+          "type": "_announcement",
+          "settings": {
+            "text": "FREE SHIPPING ON ORDERS ABOVE ₹999"
+          }
+        },
+        "announcement_cod": {
+          "type": "_announcement",
+          "settings": {
+            "text": "COD AVAILABLE"
+          }
         }
       },
       "block_order": [
-        "announcement_BxgCk9"
+        "announcement_BxgCk9",
+        "announcement_free_ship",
+        "announcement_cod"
       ],
       "name": "t:names.announcement_bar",
       "settings": {
