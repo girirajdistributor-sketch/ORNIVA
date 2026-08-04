@@ -1,0 +1,233 @@
+<!-- ========================= Breadcrumb ========================= -->
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <div class="container">
+    <ol>
+      <li><a href="{{ routes.root_url }}">Home</a></li>
+      <li>&rsaquo;</li>
+      {%- if product.collections.first -%}
+        <li><a href="{{ product.collections.first.url }}">{{ product.collections.first.title }}</a></li>
+        <li>&rsaquo;</li>
+      {%- endif -%}
+      <li aria-current="page">{{ product.title }}</li>
+    </ol>
+  </div>
+</nav>
+
+<!-- ========================= Product main ========================= -->
+<main class="product-main">
+  {%- form 'product', product -%}
+  <div class="container product-layout">
+
+    <!-- Gallery -->
+    <div class="gallery">
+      <div class="gallery__thumbs">
+        {%- for media in product.media limit: 8 -%}
+          <button class="gallery__thumb{% if forloop.first %} is-active{% endif %}" data-media-id="{{ media.id }}" aria-label="View image {{ forloop.index }}">
+            <img src="{{ media | image_url: width: 150 }}" alt="{{ media.alt | default: product.title | escape }}" width="150" height="150" loading="lazy">
+          </button>
+        {%- endfor -%}
+      </div>
+
+      <div class="gallery__main">
+        {%- if product.compare_at_price > product.price -%}
+          <span class="gallery__badge">Sale</span>
+        {%- elsif product.tags contains 'best-seller' -%}
+          <span class="gallery__badge">Best Seller</span>
+        {%- endif -%}
+        <button class="gallery__wishlist" aria-label="Add to wishlist" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+        </button>
+        {%- for media in product.media limit: 8 -%}
+          <img
+            class="gallery__main-image{% if forloop.first %} is-active{% endif %}"
+            data-media-id="{{ media.id }}"
+            src="{{ media | image_url: width: 800 }}"
+            alt="{{ media.alt | default: product.title | escape }}"
+            width="800"
+            height="{{ 800 | divided_by: media.aspect_ratio | default: 800 }}"
+            loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+          >
+        {%- endfor -%}
+        <div class="gallery__nav">
+          <button class="gallery__prev" aria-label="Previous image" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+          <button class="gallery__next" aria-label="Next image" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product info -->
+    <div class="product-info">
+      <h1>{{ product.title }}</h1>
+
+      <div class="product-info__rating">
+        <span class="rating__stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="is-empty" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </span>
+        (24 reviews)
+      </div>
+
+      <div class="product-info__price">
+        <span class="price-now">{{ product.price | money }}</span>
+        {%- if product.compare_at_price > product.price -%}
+          <span class="price-old">{{ product.compare_at_price | money }}</span>
+          <span class="discount-badge">{{ product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | round }}% OFF</span>
+        {%- endif -%}
+      </div>
+
+      <div class="trust-row">
+        <div class="trust-row__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l4 6-10 12L2 9Z"/><path d="M2 9h20"/><path d="M8 9l4 12 4-12"/></svg> Premium Quality</div>
+        <div class="trust-row__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg> Tarnish Free</div>
+        <div class="trust-row__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2s7 8 7 13a7 7 0 1 1-14 0c0-5 7-13 7-13Z"/></svg> Skin Friendly</div>
+      </div>
+
+      <div class="info-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8Z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        <div>
+          <strong>Estimated Delivery: 2&ndash;4 business days</strong>
+          <span class="sub-note">Free Shipping on orders above &#8377;999</span>
+        </div>
+      </div>
+
+      {%- assign option1 = product.options_with_values[0] -%}
+      {%- if option1 -%}
+        <div class="option-block">
+          <div class="option-block__label">{{ option1.name }}: <span>{{ product.selected_or_first_available_variant.option1 }}</span></div>
+          <div class="color-swatches">
+            {%- for value in option1.values -%}
+              <button
+                type="button"
+                class="color-swatch{% if product.selected_or_first_available_variant.option1 == value %} is-selected{% endif %}"
+                data-option-value="{{ value | escape }}"
+                style="--swatch-color: {{ value | handle }};"
+                aria-label="{{ value }}"
+                aria-pressed="{% if product.selected_or_first_available_variant.option1 == value %}true{% else %}false{% endif %}"
+              ><span></span></button>
+            {%- endfor -%}
+          </div>
+        </div>
+      {%- endif -%}
+      <input type="hidden" name="id" id="orniva-selected-variant-id" value="{{ product.selected_or_first_available_variant.id }}">
+
+      <div class="qty-row">
+        <div class="option-block__label" style="margin:0;">Quantity:</div>
+        <div class="qty-stepper">
+          <button class="qty-decrease" aria-label="Decrease quantity" type="button">&minus;</button>
+          <input type="number" name="quantity" value="1" min="1" max="10" inputmode="numeric" aria-label="Quantity" />
+          <button class="qty-increase" aria-label="Increase quantity" type="button">&plus;</button>
+        </div>
+        <div class="stock-status"><span class="dot"></span> {% if product.selected_or_first_available_variant.available %}In Stock{% else %}Out of Stock{% endif %}</div>
+      </div>
+
+      <div class="product-actions">
+        <button type="submit" name="add" class="btn btn-primary btn-block"{% unless product.selected_or_first_available_variant.available %} disabled{% endunless %}>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          Add To Cart
+        </button>
+        {{ form | payment_button }}
+      </div>
+
+      <div class="trust-row">
+        <div class="trust-row__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8Z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> COD Available</div>
+        <div class="trust-row__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg> 7 Days Easy Returns</div>
+        <div class="trust-row__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Secure Payment</div>
+      </div>
+    </div>
+  </div>
+  {%- endform -%}
+
+  <!-- Tabs -->
+  <div class="container">
+    <div class="product-tabs">
+      <div class="tabs__nav" role="tablist">
+        <button class="is-active" data-tab="tab-description" role="tab" aria-selected="true">Description</button>
+        <button data-tab="tab-details" role="tab" aria-selected="false">Product Details</button>
+        <button data-tab="tab-shipping" role="tab" aria-selected="false">Shipping &amp; Returns</button>
+        <button data-tab="tab-care" role="tab" aria-selected="false">Care Guide</button>
+      </div>
+
+      <div class="tabs__panel is-active" id="tab-description" role="tabpanel">
+        <div>
+          {{ product.description }}
+          <ul class="check-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Premium quality materials</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Gold plated for long lasting shine</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Lightweight &amp; comfortable to wear</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Perfect for weddings, festive &amp; parties</li>
+          </ul>
+        </div>
+        <div class="spec-box">
+          <div class="spec-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41 11 3.83A2 2 0 0 0 9.5 3H4a1 1 0 0 0-1 1v5.5a2 2 0 0 0 .83 1.5l9.58 9.59a2 2 0 0 0 2.83 0l4.35-4.35a2 2 0 0 0 0-2.83Z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg> <span><strong>Material:</strong> {{ product.metafields.custom.material }}</span></div>
+          <div class="spec-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2s7 8 7 13a7 7 0 1 1-14 0c0-5 7-13 7-13Z"/></svg> <span><strong>Plating:</strong> {{ product.metafields.custom.plating }}</span></div>
+          <div class="spec-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l4 6-10 12L2 9Z"/><path d="M2 9h20"/><path d="M8 9l4 12 4-12"/></svg> <span><strong>Stone Type:</strong> {{ product.metafields.custom.stone_type }}</span></div>
+          <div class="spec-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8 12 3 3 8l9 5 9-5Z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg> <span><strong>Set Contents:</strong> {{ product.metafields.custom.set_contents }}</span></div>
+          <div class="spec-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="m7 7-4 8a4 4 0 0 0 8 0Z"/><path d="m21 7-4 8a4 4 0 0 0 8 0Z"/><path d="M3 7h18"/></svg> <span><strong>Weight:</strong> {{ product.metafields.custom.weight }}</span></div>
+        </div>
+      </div>
+
+      <div class="tabs__panel" id="tab-details" role="tabpanel">
+        <div>
+          <p>Every piece is finished by hand and quality-checked before it ships, so the sparkle you see is the sparkle you get.</p>
+          <ul class="check-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Necklace length: {{ product.metafields.custom.necklace_length }}</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Secure lobster clasp closure</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Nickel &amp; lead free base metal</li>
+          </ul>
+        </div>
+        <div class="spec-box">
+          <div class="spec-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8 12 3 3 8l9 5 9-5Z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg> <span><strong>SKU:</strong> {{ product.selected_or_first_available_variant.sku }}</span></div>
+          <div class="spec-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg> <span><strong>Care:</strong> Wipe with soft cloth</span></div>
+          <div class="spec-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2s7 8 7 13a7 7 0 1 1-14 0c0-5 7-13 7-13Z"/></svg> <span><strong>Hypoallergenic:</strong> Yes</span></div>
+        </div>
+      </div>
+
+      <div class="tabs__panel" id="tab-shipping" role="tabpanel">
+        <div>
+          <p>We dispatch every order within 24&ndash;48 hours in tamper-proof, gift-ready packaging so it arrives exactly as it left our studio.</p>
+          <ul class="check-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Free shipping on orders above &#8377;999</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Cash on delivery available</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> 7 days easy returns &amp; exchange</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Refund processed within 5&ndash;7 business days</li>
+          </ul>
+        </div>
+        <div class="spec-box">
+          <div class="spec-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8Z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> <span><strong>Delivery:</strong> 2&ndash;4 business days</span></div>
+          <div class="spec-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg> <span><strong>Returns:</strong> 7 days</span></div>
+          <div class="spec-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> <span><strong>Payment:</strong> Secure &amp; encrypted</span></div>
+        </div>
+      </div>
+
+      <div class="tabs__panel" id="tab-care" role="tabpanel">
+        <div>
+          <p>A little care keeps the shine looking new for years. Follow these simple steps to protect your jewellery.</p>
+          <ul class="check-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Keep away from water, perfume &amp; sweat</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Store in the pouch provided, away from sunlight</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Wipe gently with a soft, dry cloth after each wear</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Put it on last, take it off first</li>
+          </ul>
+        </div>
+        <div class="spec-box">
+          <div class="spec-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2s7 8 7 13a7 7 0 1 1-14 0c0-5 7-13 7-13Z"/></svg> <span><strong>Avoid:</strong> Water &amp; perfume</span></div>
+          <div class="spec-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4"/><path d="M12 8v13"/><path d="M19 12v7a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-7"/></svg> <span><strong>Store:</strong> In pouch, dry place</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Related products -->
+  <div class="container related-products">
+    <div class="section-heading"><h2>You May Also Like</h2></div>
+    <div class="product-carousel">
+      <div class="product-carousel__track">
+        {%- for related in product.recommendations limit: 5 -%}
+          {%- render 'orniva-product-card', product: related -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</main>

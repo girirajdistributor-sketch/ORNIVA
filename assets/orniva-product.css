@@ -472,3 +472,15 @@
 .related-products {
   margin-top: 60px;
 }
+
+/* ---------- Gallery main image (real images, JS toggles .is-active) ---------- */
+.gallery__main-image {
+  display: none;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.gallery__main-image.is-active {
+  display: block;
+}

@@ -4,19 +4,20 @@
 document.addEventListener("DOMContentLoaded", () => {
   /* ---------- Gallery ---------- */
   const thumbs = document.querySelectorAll(".gallery__thumb");
-  const mainMedia = document.querySelector(".gallery__main .ph-img");
+  const mainImages = document.querySelectorAll(".gallery__main-image");
 
   const setActiveThumb = (index) => {
     thumbs.forEach((thumb, i) => thumb.classList.toggle("is-active", i === index));
   };
 
+  const setActiveMainImage = (mediaId) => {
+    mainImages.forEach((img) => img.classList.toggle("is-active", img.dataset.mediaId === mediaId));
+  };
+
   thumbs.forEach((thumb, index) => {
     thumb.addEventListener("click", () => {
       setActiveThumb(index);
-      const variant = thumb.dataset.variant;
-      if (mainMedia && variant) {
-        mainMedia.className = `ph-img ${variant}`;
-      }
+      setActiveMainImage(thumb.dataset.mediaId);
     });
   });
 
