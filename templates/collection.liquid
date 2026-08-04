@@ -1,0 +1,178 @@
+<!-- ========================= Breadcrumb ========================= -->
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <div class="container">
+    <ol>
+      <li><a href="{{ routes.root_url }}">Home</a></li>
+      <li>&rsaquo;</li>
+      <li aria-current="page">{{ collection.title }}</li>
+    </ol>
+  </div>
+</nav>
+
+<!-- ========================= Page banner ========================= -->
+<section class="page-banner">
+  <div class="container page-banner__inner">
+    <div class="page-banner__copy">
+      <h1>{{ collection.title }}</h1>
+      <p>{% if collection.description != blank %}{{ collection.description }}{% else %}Timeless elegance in every design. Find the perfect necklace for every you.{% endif %}</p>
+      <div class="page-banner__rule"></div>
+    </div>
+    <div class="page-banner__media ph-img">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4c0 6 3.5 10 8 10s8-4 8-10"/><circle cx="12" cy="17" r="3"/></svg>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= Listing ========================= -->
+<section class="listing">
+  <div class="container">
+    <button class="filters-toggle" aria-expanded="false" aria-controls="filters">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/><circle cx="9" cy="6" r="2"/><circle cx="15" cy="12" r="2"/><circle cx="9" cy="18" r="2"/></svg>
+      Filter By
+    </button>
+
+    <div class="listing__inner">
+      <!-- Sidebar filters (decorative only — not wired to real Shopify filtering) -->
+      <aside class="filters" id="filters">
+        <div class="filters__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/><circle cx="9" cy="6" r="2"/><circle cx="15" cy="12" r="2"/><circle cx="9" cy="18" r="2"/></svg>
+          Filter By
+        </div>
+
+        <div class="filter-group">
+          <div class="filter-group__heading">Categories</div>
+          <label class="filter-option"><input type="radio" name="category" checked /><span>All Necklaces</span><small>(120)</small></label>
+          <label class="filter-option"><input type="radio" name="category" /><span>Mangalsutra</span><small>(28)</small></label>
+          <label class="filter-option"><input type="radio" name="category" /><span>Choker</span><small>(24)</small></label>
+          <label class="filter-option"><input type="radio" name="category" /><span>Long Necklaces</span><small>(32)</small></label>
+          <label class="filter-option"><input type="radio" name="category" /><span>Pendant Sets</span><small>(36)</small></label>
+        </div>
+
+        <div class="filter-group">
+          <div class="filter-group__heading">Price</div>
+          <div class="price-range">
+            <input type="range" min="199" max="2999" value="2999" aria-label="Maximum price" />
+            <div class="price-range__values"><span>&#8377;199</span><span>&#8377;2,999</span></div>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <div class="filter-group__heading">Material</div>
+          <label class="filter-option"><input type="checkbox" /><span>Gold Plated</span><small>(85)</small></label>
+          <label class="filter-option"><input type="checkbox" /><span>Rose Gold</span><small>(22)</small></label>
+          <label class="filter-option"><input type="checkbox" /><span>Rhodium Plated</span><small>(27)</small></label>
+          <label class="filter-option"><input type="checkbox" /><span>Silver Plated</span><small>(18)</small></label>
+        </div>
+
+        <div class="filter-group">
+          <div class="filter-group__heading">Occasion</div>
+          <label class="filter-option"><input type="checkbox" /><span>Daily Wear</span><small>(56)</small></label>
+          <label class="filter-option"><input type="checkbox" /><span>Party Wear</span><small>(48)</small></label>
+          <label class="filter-option"><input type="checkbox" /><span>Wedding</span><small>(32)</small></label>
+          <label class="filter-option"><input type="checkbox" /><span>Festive</span><small>(28)</small></label>
+        </div>
+
+        <div class="filter-group">
+          <div class="filter-group__heading">Rating</div>
+          <label class="filter-option filter-option--stars">
+            <input type="checkbox" />
+            <span class="rating__stars">
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </span>
+            <small>(45)</small>
+          </label>
+          <label class="filter-option filter-option--stars">
+            <input type="checkbox" />
+            <span class="rating__stars">
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="is-empty" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </span>
+            <small>&amp; above (68)</small>
+          </label>
+          <label class="filter-option filter-option--stars">
+            <input type="checkbox" />
+            <span class="rating__stars">
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="is-empty" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="is-empty" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </span>
+            <small>&amp; above (92)</small>
+          </label>
+          <label class="filter-option filter-option--stars">
+            <input type="checkbox" />
+            <span class="rating__stars">
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="is-empty" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="is-empty" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="is-empty" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </span>
+            <small>&amp; above (110)</small>
+          </label>
+        </div>
+
+        <button class="filters__clear">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+          Clear All
+        </button>
+      </aside>
+
+      <!-- Product grid -->
+      <div class="listing__content">
+        {%- paginate collection.products by 12 -%}
+        <div class="listing__toolbar">
+          <div>Showing {{ paginate.current_offset | plus: 1 }}&ndash;{{ paginate.current_offset | plus: paginate.page_size | at_most: paginate.items }} of {{ paginate.items }} products</div>
+          <div class="listing__toolbar-right">
+            <div class="sort-select">
+              <label for="sort" class="visually-hidden">Sort by</label>
+              Sort by:
+              <select id="sort" onchange="window.location.href=this.value">
+                <option value="{{ collection.url }}?sort_by=manual"{% if collection.sort_by == 'manual' %} selected{% endif %}>Featured</option>
+                <option value="{{ collection.url }}?sort_by=price-ascending"{% if collection.sort_by == 'price-ascending' %} selected{% endif %}>Price: Low to High</option>
+                <option value="{{ collection.url }}?sort_by=price-descending"{% if collection.sort_by == 'price-descending' %} selected{% endif %}>Price: High to Low</option>
+                <option value="{{ collection.url }}?sort_by=created-descending"{% if collection.sort_by == 'created-descending' %} selected{% endif %}>Newest</option>
+                <option value="{{ collection.url }}?sort_by=best-selling"{% if collection.sort_by == 'best-selling' %} selected{% endif %}>Best Rated</option>
+              </select>
+            </div>
+            <div class="view-toggle">
+              <button class="is-active" aria-label="Grid view" aria-pressed="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></button>
+              <button aria-label="List view" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-grid">
+          {%- for product in collection.products -%}
+            {%- render 'orniva-product-card', product: product -%}
+          {%- endfor -%}
+        </div>
+
+        <nav class="pagination" aria-label="Product list pagination">
+          {%- if paginate.previous -%}
+            <a href="{{ paginate.previous.url }}" aria-label="Previous page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></a>
+          {%- endif -%}
+          {%- for part in paginate.parts -%}
+            {%- if part.is_link -%}
+              <a href="{{ part.url }}">{{ part.title }}</a>
+            {%- else -%}
+              <button class="is-active" aria-current="page">{{ part.title }}</button>
+            {%- endif -%}
+          {%- endfor -%}
+          {%- if paginate.next -%}
+            <a href="{{ paginate.next.url }}" aria-label="Next page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+          {%- endif -%}
+        </nav>
+        {%- endpaginate -%}
+      </div>
+    </div>
+  </div>
+</section>
