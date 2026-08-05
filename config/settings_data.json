@@ -97,7 +97,7 @@
           "show_account": true,
           "show_wishlist": true,
           "enable_sticky_header": false,
-          "header_background_color": "#FFFDFC"
+          "header_background_color": "#fffdfc"
         }
       },
       "orniva-hero": {
@@ -346,8 +346,8 @@
       "orniva-footer": {
         "type": "orniva-footer",
         "settings": {
-          "logo_text": "ORNIVA",
-          "logo_tagline": "Shine Every Day",
+          "logo_text": "",
+          "logo_tagline": "",
           "description": "Timeless imitation jewellery crafted to bring elegance to your everyday.",
           "instagram_url": "",
           "facebook_url": "",
