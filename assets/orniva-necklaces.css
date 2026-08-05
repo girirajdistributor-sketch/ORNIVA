@@ -71,6 +71,10 @@
   padding-block: 40px 60px;
 }
 
+.filters-form {
+  display: contents;
+}
+
 .listing__inner {
   display: grid;
   grid-template-columns: 260px 1fr;
