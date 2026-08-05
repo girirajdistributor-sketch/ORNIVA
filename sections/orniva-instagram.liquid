@@ -1,0 +1,81 @@
+<!-- ========================= Instagram grid ========================= -->
+<section class="instagram">
+  <div class="container">
+    {%- if section.settings.heading != blank -%}
+      <div class="section-heading"><h2>{{ section.settings.heading }}</h2></div>
+    {%- endif -%}
+    <div class="instagram__grid">
+      {%- for block in section.blocks -%}
+        <div
+          class="instagram-item ph-img{% if block.settings.style == 'soft' %} ph-img--soft{% elsif block.settings.style == 'dark' %} ph-img--dark{% endif %}"
+          {{ block.shopify_attributes }}
+        >
+          {%- if block.settings.image != blank -%}
+            <img
+              src="{{ block.settings.image | image_url: width: 400 }}"
+              alt="{{ section.settings.heading | default: shop.name | escape }}"
+              loading="lazy"
+              width="400"
+              height="400"
+            >
+          {%- endif -%}
+          <button class="instagram-item__wishlist" aria-label="Save">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+          </button>
+        </div>
+      {%- endfor -%}
+    </div>
+    {%- if section.settings.button_label != blank -%}
+      <a href="{{ section.settings.button_link | default: '#' }}" class="btn btn-outline">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37Z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        {{ section.settings.button_label }}
+      </a>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Orniva Instagram",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Explore @orniva.jewels" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Follow Us On Instagram" },
+    { "type": "url", "id": "button_link", "label": "Button link", "info": "Link to your Instagram profile." }
+  ],
+  "blocks": [
+    {
+      "type": "photo",
+      "name": "Photo",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image", "info": "Optional. Leave blank to keep the decorative placeholder." },
+        {
+          "type": "select",
+          "id": "style",
+          "label": "Placeholder style",
+          "info": "Used only when no image is set.",
+          "options": [
+            { "value": "soft", "label": "Soft" },
+            { "value": "none", "label": "Default" },
+            { "value": "dark", "label": "Dark" }
+          ],
+          "default": "none"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "default": {
+    "settings": {
+      "heading": "Explore @orniva.jewels",
+      "button_label": "Follow Us On Instagram"
+    },
+    "blocks": [
+      { "type": "photo", "settings": { "style": "soft" } },
+      { "type": "photo", "settings": { "style": "none" } },
+      { "type": "photo", "settings": { "style": "dark" } },
+      { "type": "photo", "settings": { "style": "soft" } },
+      { "type": "photo", "settings": { "style": "none" } }
+    ]
+  }
+}
+{% endschema %}
