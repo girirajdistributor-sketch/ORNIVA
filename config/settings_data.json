@@ -83,8 +83,9 @@
           "topbar_left_text": "Shine Every Day",
           "topbar_center_text": "FREE SHIPPING ON ORDERS ABOVE ₹999",
           "topbar_right_text": "COD AVAILABLE",
-          "topbar_background_color": "",
+          "topbar_background_color": "{{ settings.color_palette.foreground }}",
           "topbar_text_color": "",
+          "logo_image": "shopify://shop_images/ChatGPT_Image_Aug_5_2026_03_46_22_PM.png",
           "logo_width": 140,
           "logo_text": "ORNIVA",
           "logo_tagline": "Shine Every Day",
@@ -93,7 +94,7 @@
           "show_account": true,
           "show_wishlist": true,
           "enable_sticky_header": false,
-          "header_background_color": ""
+          "header_background_color": "#FFFDFC"
         }
       },
       "orniva-hero": {
@@ -235,6 +236,127 @@
           "products_to_show": 5,
           "button_label": "View All Products",
           "button_link": ""
+        }
+      },
+      "orniva-why-us": {
+        "type": "orniva-why-us",
+        "blocks": {
+          "orniva-why-us-0": {
+            "type": "feature",
+            "settings": {
+              "icon": "diamond",
+              "title": "Premium Quality",
+              "description": "Carefully selected materials for a luxurious feel."
+            }
+          },
+          "orniva-why-us-1": {
+            "type": "feature",
+            "settings": {
+              "icon": "sparkle",
+              "title": "Tarnish Free",
+              "description": "Advanced coating for long lasting shine."
+            }
+          },
+          "orniva-why-us-2": {
+            "type": "feature",
+            "settings": {
+              "icon": "drop",
+              "title": "Skin Friendly",
+              "description": "Nickel free & hypoallergenic. Safe for all skin types."
+            }
+          },
+          "orniva-why-us-3": {
+            "type": "feature",
+            "settings": {
+              "icon": "clock",
+              "title": "Trusted by Thousands",
+              "description": "Loved by 10,000+ happy customers across India."
+            }
+          }
+        },
+        "block_order": [
+          "orniva-why-us-0",
+          "orniva-why-us-1",
+          "orniva-why-us-2",
+          "orniva-why-us-3"
+        ],
+        "settings": {
+          "eyebrow": "NEW CHOOSE ORNIVA?",
+          "heading": "Designed to Make You Shine"
+        }
+      },
+      "orniva-instagram": {
+        "type": "orniva-instagram",
+        "blocks": {
+          "orniva-instagram-0": {
+            "type": "photo",
+            "settings": {
+              "style": "soft"
+            }
+          },
+          "orniva-instagram-1": {
+            "type": "photo",
+            "settings": {
+              "style": "none"
+            }
+          },
+          "orniva-instagram-2": {
+            "type": "photo",
+            "settings": {
+              "style": "dark"
+            }
+          },
+          "orniva-instagram-3": {
+            "type": "photo",
+            "settings": {
+              "style": "soft"
+            }
+          },
+          "orniva-instagram-4": {
+            "type": "photo",
+            "settings": {
+              "style": "none"
+            }
+          }
+        },
+        "block_order": [
+          "orniva-instagram-0",
+          "orniva-instagram-1",
+          "orniva-instagram-2",
+          "orniva-instagram-3",
+          "orniva-instagram-4"
+        ],
+        "settings": {
+          "heading": "Explore @orniva.jewels",
+          "button_label": "Follow Us On Instagram",
+          "button_link": ""
+        }
+      },
+      "orniva-newsletter": {
+        "type": "orniva-newsletter",
+        "settings": {
+          "heading": "Stay Connected & Get 10% Off",
+          "subtext": "Subscribe to get special offers, free giveaways and once-in-a-lifetime deals.",
+          "button_label": "Subscribe"
+        }
+      },
+      "orniva-footer": {
+        "type": "orniva-footer",
+        "settings": {
+          "logo_text": "ORNIVA",
+          "logo_tagline": "Shine Every Day",
+          "description": "Timeless imitation jewellery crafted to bring elegance to your everyday.",
+          "instagram_url": "",
+          "facebook_url": "",
+          "pinterest_url": "",
+          "youtube_url": "",
+          "quick_links_title": "Quick Links",
+          "quick_links_menu": "",
+          "service_links_title": "Customer Service",
+          "service_links_menu": "",
+          "newsletter_heading": "Newsletter",
+          "newsletter_subtext": "Subscribe to get special offers, free giveaways and once-in-a-lifetime deals.",
+          "copyright_text": "Orniva Jewels. All Rights Reserved."
         }
       }
     },
