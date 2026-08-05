@@ -30,7 +30,7 @@
 {% section 'orniva-header' %}
 {{ content_for_layout }}
 {% render 'orniva-feature-strip' %}
-{% render 'orniva-footer' %}
+{% section 'orniva-footer' %}
 {{ 'orniva-main.js' | asset_url | script_tag }}
 {%- if template.name == 'product' %}
 {{ 'orniva-product.js' | asset_url | script_tag }}

@@ -1,0 +1,111 @@
+{%- liquid
+  assign quick_links_handle = section.settings.quick_links_menu
+  assign service_links_handle = section.settings.service_links_menu
+-%}
+
+<footer class="site-footer">
+  <div class="container site-footer__top">
+    <div class="footer-brand">
+      <div class="logo">
+        <span class="logo__mark">{{ section.settings.logo_text }}</span>
+        {%- if section.settings.logo_tagline != blank -%}
+          <span class="logo__tagline">{{ section.settings.logo_tagline }}</span>
+        {%- endif -%}
+      </div>
+      {%- if section.settings.description != blank -%}
+        <p>{{ section.settings.description }}</p>
+      {%- endif -%}
+      <div class="footer-brand__socials">
+        <a href="{{ section.settings.instagram_url | default: '#' }}" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37Z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+        <a href="{{ section.settings.facebook_url | default: '#' }}" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3Z"/></svg></a>
+        <a href="{{ section.settings.pinterest_url | default: '#' }}" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21c1-3 1.5-5 2-8"/><path d="M12 3a9 9 0 1 0 3.6 17.25c-1.4-.3-2.6-1.2-3-2.6a4.3 4.3 0 0 1 .2-2.7l1-4a2.5 2.5 0 0 1 5 .3c0 1.6-1 3.7-1.6 5.2A2 2 0 0 0 19 19"/></svg></a>
+        <a href="{{ section.settings.youtube_url | default: '#' }}" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33Z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h3>{{ section.settings.quick_links_title }}</h3>
+      <ul>
+        {%- for link in linklists[quick_links_handle].links -%}
+          <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+        {%- else -%}
+          <li><a href="#">About Us</a></li>
+          <li><a href="{{ routes.all_products_collection_url }}">All Products</a></li>
+          <li><a href="#">New Arrivals</a></li>
+          <li><a href="#">Best Sellers</a></li>
+          <li><a href="#">Collections</a></li>
+          <li><a href="#">Contact Us</a></li>
+        {%- endfor -%}
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3>{{ section.settings.service_links_title }}</h3>
+      <ul>
+        {%- for link in linklists[service_links_handle].links -%}
+          <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+        {%- else -%}
+          <li><a href="#">Shipping &amp; Delivery</a></li>
+          <li><a href="#">Returns &amp; Exchanges</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms &amp; Conditions</a></li>
+          <li><a href="#">FAQ's</a></li>
+        {%- endfor -%}
+      </ul>
+    </div>
+    <div class="footer-col footer-newsletter">
+      <h3>{{ section.settings.newsletter_heading }}</h3>
+      {%- if section.settings.newsletter_subtext != blank -%}
+        <p>{{ section.settings.newsletter_subtext }}</p>
+      {%- endif -%}
+      {% form 'customer', class: 'footer-newsletter__form' %}
+        {% if form.posted_successfully? %}
+          <p class="form-success">Thanks for subscribing!</p>
+        {% endif %}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <label class="visually-hidden" for="footer-email">Email address</label>
+        <input id="footer-email" type="email" name="contact[email]" placeholder="Enter your email" required />
+        <button type="submit" aria-label="Subscribe">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+      {% endform %}
+    </div>
+  </div>
+  <div class="container site-footer__bottom">
+    <p>&copy; {{ 'now' | date: "%Y" }} {{ section.settings.copyright_text }}</p>
+    <div class="payment-icons">
+      <span>VISA</span><span>Mastercard</span><span>RuPay</span><span>UPI</span><span>COD</span>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Orniva Footer",
+  "settings": [
+    { "type": "header", "content": "Brand" },
+    { "type": "text", "id": "logo_text", "label": "Logo text", "default": "ORNIVA" },
+    { "type": "text", "id": "logo_tagline", "label": "Logo tagline", "default": "Shine Every Day" },
+    { "type": "textarea", "id": "description", "label": "Description", "default": "Timeless imitation jewellery crafted to bring elegance to your everyday." },
+
+    { "type": "header", "content": "Social links" },
+    { "type": "url", "id": "instagram_url", "label": "Instagram" },
+    { "type": "url", "id": "facebook_url", "label": "Facebook" },
+    { "type": "url", "id": "pinterest_url", "label": "Pinterest" },
+    { "type": "url", "id": "youtube_url", "label": "YouTube" },
+
+    { "type": "header", "content": "Quick links" },
+    { "type": "text", "id": "quick_links_title", "label": "Title", "default": "Quick Links" },
+    { "type": "link_list", "id": "quick_links_menu", "label": "Menu", "info": "Optional. Leave blank to use the default placeholder links." },
+
+    { "type": "header", "content": "Customer service" },
+    { "type": "text", "id": "service_links_title", "label": "Title", "default": "Customer Service" },
+    { "type": "link_list", "id": "service_links_menu", "label": "Menu", "info": "Optional. Leave blank to use the default placeholder links." },
+
+    { "type": "header", "content": "Newsletter" },
+    { "type": "text", "id": "newsletter_heading", "label": "Heading", "default": "Newsletter" },
+    { "type": "textarea", "id": "newsletter_subtext", "label": "Subtext", "default": "Subscribe to get special offers, free giveaways and once-in-a-lifetime deals." },
+
+    { "type": "header", "content": "Bottom bar" },
+    { "type": "text", "id": "copyright_text", "label": "Copyright text", "default": "Orniva Jewels. All Rights Reserved." }
+  ]
+}
+{% endschema %}

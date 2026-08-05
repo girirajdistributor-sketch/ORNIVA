@@ -10,21 +10,4 @@
 
 {% section 'orniva-instagram' %}
 
-<!-- ========================= Newsletter ========================= -->
-<section class="newsletter">
-  <div class="container newsletter__inner">
-    <div class="newsletter__copy">
-      <h2>Stay Connected &amp; Get 10% Off</h2>
-      <p>Subscribe to get special offers, free giveaways and once-in-a-lifetime deals.</p>
-    </div>
-    {% form 'customer', class: 'newsletter__form' %}
-      {% if form.posted_successfully? %}
-        <p class="form-success">Thanks for subscribing!</p>
-      {% endif %}
-      <input type="hidden" name="contact[tags]" value="newsletter">
-      <label class="visually-hidden" for="newsletter-email">Email address</label>
-      <input id="newsletter-email" type="email" name="contact[email]" placeholder="Enter your email" required />
-      <button type="submit">Subscribe</button>
-    {% endform %}
-  </div>
-</section>
+{% section 'orniva-newsletter' %}
