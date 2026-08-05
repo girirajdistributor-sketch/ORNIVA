@@ -1,0 +1,89 @@
+<!-- ========================= Promo banners ========================= -->
+<section class="promos">
+  <div class="container promos__grid">
+    {%- for block in section.blocks -%}
+      <div class="promo-card" {{ block.shopify_attributes }}>
+        <div class="promo-card__media ph-img{% if block.settings.style == 'dark' %} ph-img--dark{% endif %}">
+          {%- if block.settings.image != blank -%}
+            <img
+              src="{{ block.settings.image | image_url: width: 800 }}"
+              alt="{{ block.settings.heading | escape }}"
+              loading="lazy"
+              width="800"
+              height="{{ 800 | divided_by: block.settings.image.aspect_ratio | default: 500 }}"
+            >
+          {%- endif -%}
+        </div>
+        <div class="promo-card__content">
+          {%- if block.settings.eyebrow != blank -%}
+            <span class="promo-card__eyebrow">{{ block.settings.eyebrow }}</span>
+          {%- endif -%}
+          {%- if block.settings.heading != blank -%}
+            <h3>{{ block.settings.heading }}</h3>
+          {%- endif -%}
+          {%- if block.settings.discount_text != blank -%}
+            <div class="discount">{{ block.settings.discount_text }}</div>
+          {%- endif -%}
+          {%- if block.settings.button_label != blank -%}
+            <a href="{{ block.settings.button_link | default: routes.all_products_collection_url }}" class="btn btn-dark">
+              {{- block.settings.button_label -}}
+            </a>
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Orniva Promos",
+  "blocks": [
+    {
+      "type": "promo",
+      "name": "Promo Banner",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Background image", "info": "Optional. Leave blank to keep the decorative gradient background." },
+        {
+          "type": "select",
+          "id": "style",
+          "label": "Background style",
+          "options": [
+            { "value": "dark", "label": "Dark gradient" },
+            { "value": "light", "label": "Light gradient" }
+          ],
+          "default": "light"
+        },
+        { "type": "text", "id": "eyebrow", "label": "Eyebrow text" },
+        { "type": "text", "id": "heading", "label": "Heading", "default": "New Collection" },
+        { "type": "text", "id": "discount_text", "label": "Discount text" },
+        { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop Now" },
+        { "type": "url", "id": "button_link", "label": "Button link" }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "default": {
+    "blocks": [
+      {
+        "type": "promo",
+        "settings": {
+          "style": "dark",
+          "eyebrow": "NEW ARRIVALS +",
+          "heading": "Latest Designs, Just For You",
+          "button_label": "Explore Now"
+        }
+      },
+      {
+        "type": "promo",
+        "settings": {
+          "style": "light",
+          "heading": "Timeless Beauty For Every Moment",
+          "discount_text": "UP TO 30% OFF",
+          "button_label": "Shop Collection"
+        }
+      }
+    ]
+  }
+}
+{% endschema %}
