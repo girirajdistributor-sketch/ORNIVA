@@ -25,9 +25,6 @@
 {%- if template.name == 'product' %}
 {{ 'orniva-product.css' | asset_url | stylesheet_tag }}
 {%- endif %}
-{%- if template.name == 'cart' %}
-{{ 'orniva-cart.css' | asset_url | stylesheet_tag }}
-{%- endif %}
 {{ content_for_header }}
 </head>
 <body>
@@ -40,9 +37,6 @@
 {{ 'orniva-cart-drawer.js' | asset_url | script_tag }}
 {%- if template.name == 'product' %}
 {{ 'orniva-product.js' | asset_url | script_tag }}
-{%- endif %}
-{%- if template.name == 'cart' %}
-{{ 'orniva-cart.js' | asset_url | script_tag }}
 {%- endif %}
 </body>
 </html>
