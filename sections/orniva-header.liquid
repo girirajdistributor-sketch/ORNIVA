@@ -1,0 +1,150 @@
+{%- liquid
+  assign menu_handle = section.settings.menu | default: 'main-menu'
+  assign topbar_bg = section.settings.topbar_background_color
+  assign topbar_text = section.settings.topbar_text_color
+  assign header_bg = section.settings.header_background_color
+-%}
+
+{%- if section.settings.show_topbar -%}
+  <!-- ========================= Top announcement bar ========================= -->
+  <div
+    class="topbar"
+    {%- if topbar_bg != blank or topbar_text != blank %}
+      style="{% if topbar_bg != blank %}background:{{ topbar_bg }};{% endif %}{% if topbar_text != blank %}color:{{ topbar_text }};{% endif %}"
+    {%- endif %}
+  >
+    <div class="container topbar__inner">
+      {%- if section.settings.topbar_left_text != blank -%}
+        <div class="topbar__left topbar__item">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.6 6.4L20 10l-6.4 1.6L12 18l-1.6-6.4L4 10l6.4-1.6Z"/></svg>
+          {{ section.settings.topbar_left_text }}
+        </div>
+      {%- endif -%}
+      {%- if section.settings.topbar_center_text != blank -%}
+        <div class="topbar__center topbar__item" style="justify-content:center;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8Z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          {{ section.settings.topbar_center_text }}
+        </div>
+      {%- endif -%}
+      {%- if section.settings.topbar_right_text != blank -%}
+        <div class="topbar__right topbar__item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="M9 12l2 2 4-4"/></svg>
+          {{ section.settings.topbar_right_text }}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+{%- endif -%}
+
+<!-- ========================= Site header ========================= -->
+<header
+  class="site-header{% if section.settings.enable_sticky_header %} site-header--sticky{% endif %}"
+  {%- if header_bg != blank %}
+    style="background:{{ header_bg }};"
+  {%- endif %}
+>
+  <div class="container site-header__inner">
+    <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <div class="logo">
+      <a href="{{ routes.root_url }}">
+        {%- if section.settings.logo_image != blank -%}
+          <img
+            src="{{ section.settings.logo_image | image_url: width: section.settings.logo_width }}"
+            alt="{{ section.settings.logo_text | default: shop.name | escape }}"
+            width="{{ section.settings.logo_width }}"
+            height="{{ section.settings.logo_width | divided_by: section.settings.logo_image.aspect_ratio | default: section.settings.logo_width }}"
+          >
+        {%- else -%}
+          <span class="logo__mark">{{ section.settings.logo_text }}</span>
+          {%- if section.settings.logo_tagline != blank -%}
+            <span class="logo__tagline">{{ section.settings.logo_tagline }}</span>
+          {%- endif -%}
+        {%- endif -%}
+      </a>
+    </div>
+
+    <nav class="main-nav" aria-label="Primary">
+      <ul class="main-nav__list">
+        {%- for link in linklists[menu_handle].links -%}
+          <li><a href="{{ link.url }}"{% if link.current %} class="is-active"{% endif %}>{{ link.title | upcase }}</a></li>
+        {%- else -%}
+          <li><a href="{{ routes.root_url }}" class="is-active">HOME</a></li>
+          <li><a href="#">NEW ARRIVALS</a></li>
+          <li><a href="#">NECKLACES</a></li>
+          <li><a href="#">EARRINGS</a></li>
+          <li><a href="#">BRACELETS</a></li>
+          <li><a href="#">RINGS</a></li>
+          <li><a href="#">COLLECTIONS</a></li>
+          <li><a href="#">ABOUT US</a></li>
+        {%- endfor -%}
+      </ul>
+    </nav>
+    <div class="nav-backdrop"></div>
+
+    <div class="header-icons">
+      {%- if section.settings.show_search -%}
+        <a href="{{ routes.search_url }}" aria-label="Search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </a>
+      {%- endif -%}
+      {%- if section.settings.show_account -%}
+        <a href="{{ routes.account_url }}" aria-label="Account">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </a>
+      {%- endif -%}
+      {%- if section.settings.show_wishlist -%}
+        <a href="#" aria-label="Wishlist">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+        </a>
+      {%- endif -%}
+      <a href="{{ routes.cart_url }}" aria-label="Cart, {{ cart.item_count }} items">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cart-count">{{ cart.item_count }}</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+{% stylesheet %}
+  .site-header--sticky {
+    position: sticky;
+    top: 0;
+    z-index: 60;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Orniva Header",
+  "settings": [
+    { "type": "header", "content": "Announcement bar" },
+    { "type": "checkbox", "id": "show_topbar", "label": "Show announcement bar", "default": true },
+    { "type": "text", "id": "topbar_left_text", "label": "Left text", "default": "Shine Every Day" },
+    { "type": "text", "id": "topbar_center_text", "label": "Center text", "default": "FREE SHIPPING ON ORDERS ABOVE ₹999" },
+    { "type": "text", "id": "topbar_right_text", "label": "Right text", "default": "COD AVAILABLE" },
+    { "type": "color", "id": "topbar_background_color", "label": "Background color", "info": "Leave blank to use the default theme color" },
+    { "type": "color", "id": "topbar_text_color", "label": "Text color", "info": "Leave blank to use the default theme color" },
+
+    { "type": "header", "content": "Logo" },
+    { "type": "image_picker", "id": "logo_image", "label": "Logo image", "info": "Optional. If set, replaces the text logo below." },
+    { "type": "range", "id": "logo_width", "label": "Logo image width", "min": 60, "max": 300, "step": 10, "default": 140, "unit": "px", "visible_if": "{{ section.settings.logo_image != blank }}" },
+    { "type": "text", "id": "logo_text", "label": "Logo text", "default": "ORNIVA", "visible_if": "{{ section.settings.logo_image == blank }}" },
+    { "type": "text", "id": "logo_tagline", "label": "Logo tagline", "default": "Shine Every Day", "visible_if": "{{ section.settings.logo_image == blank }}" },
+
+    { "type": "header", "content": "Menu" },
+    { "type": "link_list", "id": "menu", "label": "Menu", "default": "main-menu" },
+
+    { "type": "header", "content": "Icons" },
+    { "type": "checkbox", "id": "show_search", "label": "Show search icon", "default": true },
+    { "type": "checkbox", "id": "show_account", "label": "Show account icon", "default": true },
+    { "type": "checkbox", "id": "show_wishlist", "label": "Show wishlist icon", "default": true },
+
+    { "type": "header", "content": "Behavior" },
+    { "type": "checkbox", "id": "enable_sticky_header", "label": "Stick header to top on scroll", "default": false },
+    { "type": "color", "id": "header_background_color", "label": "Header background color", "info": "Leave blank to use the default theme color" }
+  ]
+}
+{% endschema %}
