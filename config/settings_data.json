@@ -130,6 +130,112 @@
           "autoplay": true,
           "autoplay_speed": 5
         }
+      },
+      "orniva-categories": {
+        "type": "orniva-categories",
+        "blocks": {
+          "orniva-categories-0": {
+            "type": "category",
+            "settings": {
+              "collection": "",
+              "title": "Necklaces",
+              "icon": "necklace"
+            }
+          },
+          "orniva-categories-1": {
+            "type": "category",
+            "settings": {
+              "collection": "",
+              "title": "Earrings",
+              "icon": "earring"
+            }
+          },
+          "orniva-categories-2": {
+            "type": "category",
+            "settings": {
+              "collection": "",
+              "title": "Bracelets",
+              "icon": "bracelet"
+            }
+          },
+          "orniva-categories-3": {
+            "type": "category",
+            "settings": {
+              "collection": "",
+              "title": "Rings",
+              "icon": "ring"
+            }
+          },
+          "orniva-categories-4": {
+            "type": "category",
+            "settings": {
+              "collection": "",
+              "title": "Mangalsutra",
+              "icon": "mangalsutra"
+            }
+          },
+          "orniva-categories-5": {
+            "type": "category",
+            "settings": {
+              "collection": "",
+              "title": "Collections",
+              "icon": "sparkle"
+            }
+          }
+        },
+        "block_order": [
+          "orniva-categories-0",
+          "orniva-categories-1",
+          "orniva-categories-2",
+          "orniva-categories-3",
+          "orniva-categories-4",
+          "orniva-categories-5"
+        ],
+        "settings": {
+          "heading": "Shop By Category"
+        }
+      },
+      "orniva-promos": {
+        "type": "orniva-promos",
+        "blocks": {
+          "orniva-promos-0": {
+            "type": "promo",
+            "settings": {
+              "style": "dark",
+              "eyebrow": "NEW ARRIVALS +",
+              "heading": "Latest Designs, Just For You",
+              "discount_text": "",
+              "button_label": "Explore Now",
+              "button_link": ""
+            }
+          },
+          "orniva-promos-1": {
+            "type": "promo",
+            "settings": {
+              "style": "light",
+              "eyebrow": "",
+              "heading": "Timeless Beauty For Every Moment",
+              "discount_text": "UP TO 30% OFF",
+              "button_label": "Shop Collection",
+              "button_link": ""
+            }
+          }
+        },
+        "block_order": [
+          "orniva-promos-0",
+          "orniva-promos-1"
+        ],
+        "settings": {}
+      },
+      "orniva-best-sellers": {
+        "type": "orniva-best-sellers",
+        "settings": {
+          "heading": "Best Sellers",
+          "collection": "automated-collection",
+          "products_to_show": 5,
+          "button_label": "View All Products",
+          "button_link": ""
+        }
       }
     },
     "content_for_index": [],
