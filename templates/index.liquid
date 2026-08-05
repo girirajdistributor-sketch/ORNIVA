@@ -4,22 +4,7 @@
 
 {% section 'orniva-promos' %}
 
-<!-- ========================= Best sellers ========================= -->
-<section class="product-section">
-  <div class="container">
-    <div class="section-heading"><h2>Best Sellers</h2></div>
-    <div class="product-carousel">
-      <div class="product-carousel__track">
-        {%- for product in collections.all.products limit: 5 -%}
-          {%- render 'orniva-product-card', product: product -%}
-        {%- endfor -%}
-      </div>
-    </div>
-    <div class="product-section__cta">
-      <a href="{{ routes.all_products_collection_url }}" class="btn btn-primary">View All Products</a>
-    </div>
-  </div>
-</section>
+{% section 'orniva-best-sellers' %}
 
 <!-- ========================= Why choose Orniva ========================= -->
 <section class="why-us">
