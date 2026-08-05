@@ -30,4 +30,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const isOpen = filters?.classList.toggle("is-open");
     filtersToggle.setAttribute("aria-expanded", String(Boolean(isOpen)));
   });
+
+  const viewToggleButtons = document.querySelectorAll(".view-toggle button");
+  const productGrid = document.querySelector(".product-grid");
+
+  viewToggleButtons.forEach((button, index) => {
+    button.addEventListener("click", () => {
+      viewToggleButtons.forEach((b) => {
+        b.classList.toggle("is-active", b === button);
+        b.setAttribute("aria-pressed", String(b === button));
+      });
+      productGrid?.classList.toggle("is-list-view", index === 1);
+    });
+  });
 });
