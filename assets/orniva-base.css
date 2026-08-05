@@ -267,8 +267,11 @@ h4 {
   display: block;
   width: auto;
   height: auto;
-  max-width: 160px;
-  max-height: 48px;
+  max-width: 220px;
+  max-height: 130px;
+  margin-top: -34px;
+  position: relative;
+  z-index: 5;
 }
 
 .logo__mark {
@@ -422,8 +425,9 @@ h4 {
     font-size: 1.25rem;
   }
   .logo img {
-    max-width: 120px;
-    max-height: 36px;
+    max-width: 140px;
+    max-height: 84px;
+    margin-top: -22px;
   }
 }
 
