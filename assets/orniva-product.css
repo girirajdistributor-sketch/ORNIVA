@@ -484,3 +484,28 @@
 .gallery__main-image.is-active {
   display: block;
 }
+
+/* ---------- Dynamic checkout ("Buy it now") button ---------- */
+.product-actions .shopify-payment-button {
+  width: 100%;
+}
+
+.product-actions .shopify-payment-button__button--unbranded {
+  width: 100%;
+  min-height: 52px;
+  background: transparent !important;
+  border: 1px solid var(--color-gold) !important;
+  color: var(--color-gold) !important;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: var(--transition);
+}
+
+.product-actions .shopify-payment-button__button--unbranded:hover {
+  background: var(--color-gold) !important;
+  color: #fff !important;
+}
