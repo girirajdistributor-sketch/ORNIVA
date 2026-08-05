@@ -1,0 +1,44 @@
+{%- liquid
+  assign checklist_lines = section.settings.checklist_items | newline_to_br | split: '<br />'
+-%}
+<div class="tabs__panel" id="tab-shipping" role="tabpanel">
+  <div>
+    {%- if section.settings.intro_text != blank -%}
+      <p>{{ section.settings.intro_text }}</p>
+    {%- endif -%}
+    {%- if section.settings.checklist_items != blank -%}
+      <ul class="check-list">
+        {%- for line in checklist_lines -%}
+          {%- assign trimmed_line = line | strip -%}
+          {%- if trimmed_line != blank -%}
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> {{ trimmed_line }}</li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+  </div>
+  <div class="spec-box">
+    {%- if section.settings.spec_delivery != blank -%}
+      <div class="spec-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8Z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> <span><strong>Delivery:</strong> {{ section.settings.spec_delivery }}</span></div>
+    {%- endif -%}
+    {%- if section.settings.spec_returns != blank -%}
+      <div class="spec-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg> <span><strong>Returns:</strong> {{ section.settings.spec_returns }}</span></div>
+    {%- endif -%}
+    {%- if section.settings.spec_payment != blank -%}
+      <div class="spec-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> <span><strong>Payment:</strong> {{ section.settings.spec_payment }}</span></div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Product Tab: Shipping & Returns",
+  "settings": [
+    { "type": "textarea", "id": "intro_text", "label": "Intro text", "default": "We dispatch every order within 24–48 hours in tamper-proof, gift-ready packaging so it arrives exactly as it left our studio." },
+    { "type": "textarea", "id": "checklist_items", "label": "Checklist items (one per line)", "default": "Free shipping on orders above ₹999\nCash on delivery available\n7 days easy returns & exchange\nRefund processed within 5–7 business days" },
+    { "type": "text", "id": "spec_delivery", "label": "Delivery value", "default": "2–4 business days" },
+    { "type": "text", "id": "spec_returns", "label": "Returns value", "default": "7 days" },
+    { "type": "text", "id": "spec_payment", "label": "Payment value", "default": "Secure & encrypted" }
+  ]
+}
+{% endschema %}

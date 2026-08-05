@@ -1,0 +1,40 @@
+{%- liquid
+  assign checklist_lines = section.settings.checklist_items | newline_to_br | split: '<br />'
+-%}
+<div class="tabs__panel" id="tab-details" role="tabpanel">
+  <div>
+    {%- if section.settings.intro_text != blank -%}
+      <p>{{ section.settings.intro_text }}</p>
+    {%- endif -%}
+    <ul class="check-list">
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Necklace length: {{ product.metafields.custom.necklace_length }}</li>
+      {%- for line in checklist_lines -%}
+        {%- assign trimmed_line = line | strip -%}
+        {%- if trimmed_line != blank -%}
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> {{ trimmed_line }}</li>
+        {%- endif -%}
+      {%- endfor -%}
+    </ul>
+  </div>
+  <div class="spec-box">
+    <div class="spec-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8 12 3 3 8l9 5 9-5Z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg> <span><strong>SKU:</strong> {{ product.selected_or_first_available_variant.sku }}</span></div>
+    {%- if section.settings.spec_care != blank -%}
+      <div class="spec-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg> <span><strong>Care:</strong> {{ section.settings.spec_care }}</span></div>
+    {%- endif -%}
+    {%- if section.settings.spec_hypoallergenic != blank -%}
+      <div class="spec-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2s7 8 7 13a7 7 0 1 1-14 0c0-5 7-13 7-13Z"/></svg> <span><strong>Hypoallergenic:</strong> {{ section.settings.spec_hypoallergenic }}</span></div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Product Tab: Details",
+  "settings": [
+    { "type": "textarea", "id": "intro_text", "label": "Intro text", "default": "Every piece is finished by hand and quality-checked before it ships, so the sparkle you see is the sparkle you get." },
+    { "type": "textarea", "id": "checklist_items", "label": "Checklist items (one per line)", "info": "\"Necklace length\" always shows above these, pulled from the product's metafield.", "default": "Secure lobster clasp closure\nNickel & lead free base metal" },
+    { "type": "text", "id": "spec_care", "label": "Care value", "default": "Wipe with soft cloth" },
+    { "type": "text", "id": "spec_hypoallergenic", "label": "Hypoallergenic value", "default": "Yes" }
+  ]
+}
+{% endschema %}
