@@ -22,7 +22,7 @@
     <div class="gallery">
       <div class="gallery__thumbs">
         {%- for media in product.media limit: 8 -%}
-          <button class="gallery__thumb{% if forloop.first %} is-active{% endif %}" data-media-id="{{ media.id }}" aria-label="View image {{ forloop.index }}">
+          <button type="button" class="gallery__thumb{% if forloop.first %} is-active{% endif %}" data-media-id="{{ media.id }}" aria-label="View image {{ forloop.index }}">
             <img src="{{ media | image_url: width: 150 }}" alt="{{ media.alt | default: product.title | escape }}" width="150" height="150" loading="lazy">
           </button>
         {%- endfor -%}
