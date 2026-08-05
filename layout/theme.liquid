@@ -15,6 +15,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 {{ 'orniva-base.css' | asset_url | stylesheet_tag }}
+{{ 'orniva-cart-drawer.css' | asset_url | stylesheet_tag }}
 {%- if template.name == 'index' %}
 {{ 'orniva-home.css' | asset_url | stylesheet_tag }}
 {%- endif %}
@@ -24,16 +25,24 @@
 {%- if template.name == 'product' %}
 {{ 'orniva-product.css' | asset_url | stylesheet_tag }}
 {%- endif %}
+{%- if template.name == 'cart' %}
+{{ 'orniva-cart.css' | asset_url | stylesheet_tag }}
+{%- endif %}
 {{ content_for_header }}
 </head>
 <body>
 {% section 'orniva-header' %}
+{% render 'orniva-cart-drawer' %}
 {{ content_for_layout }}
 {% render 'orniva-feature-strip' %}
 {% section 'orniva-footer' %}
 {{ 'orniva-main.js' | asset_url | script_tag }}
+{{ 'orniva-cart-drawer.js' | asset_url | script_tag }}
 {%- if template.name == 'product' %}
 {{ 'orniva-product.js' | asset_url | script_tag }}
+{%- endif %}
+{%- if template.name == 'cart' %}
+{{ 'orniva-cart.js' | asset_url | script_tag }}
 {%- endif %}
 </body>
 </html>

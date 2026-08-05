@@ -1,0 +1,57 @@
+<div class="cart-drawer-backdrop" data-cart-drawer-backdrop></div>
+<aside class="cart-drawer" id="cart-drawer" aria-hidden="true">
+  <div class="cart-drawer__header">
+    <h2>Your Cart</h2>
+    <button type="button" class="cart-drawer__close" aria-label="Close cart" data-cart-drawer-close>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+
+  <div class="cart-drawer__body" data-cart-drawer-body>
+    {%- if cart.item_count > 0 -%}
+      <ul class="cart-drawer__items" data-cart-drawer-items>
+        {%- for item in cart.items -%}
+          <li class="cart-drawer__item" data-cart-item-key="{{ item.key }}">
+            <a href="{{ item.url }}" class="cart-drawer__item-image">
+              {%- if item.image -%}
+                <img src="{{ item.image | image_url: width: 160 }}" alt="{{ item.image.alt | default: item.product.title | escape }}" width="80" height="80" loading="lazy">
+              {%- endif -%}
+            </a>
+            <div class="cart-drawer__item-info">
+              <a href="{{ item.url }}" class="cart-drawer__item-title">{{ item.product.title }}</a>
+              {%- unless item.variant.title == 'Default Title' -%}
+                <div class="cart-drawer__item-variant">{{ item.variant.title }}</div>
+              {%- endunless -%}
+              <div class="cart-drawer__item-price">{{ item.final_price | money }}</div>
+              <div class="cart-drawer__item-controls">
+                <div class="cart-drawer__qty-stepper">
+                  <button type="button" data-cart-qty-decrease aria-label="Decrease quantity">&minus;</button>
+                  <input type="number" value="{{ item.quantity }}" min="0" data-cart-qty-input aria-label="Quantity">
+                  <button type="button" data-cart-qty-increase aria-label="Increase quantity">&plus;</button>
+                </div>
+                <button type="button" class="cart-drawer__item-remove" data-cart-item-remove aria-label="Remove item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                </button>
+              </div>
+            </div>
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- else -%}
+      <div class="cart-drawer__empty">
+        <p>Your cart is empty.</p>
+        <a href="{{ routes.all_products_collection_url }}" class="btn btn-primary" data-cart-drawer-close>Continue Shopping</a>
+      </div>
+    {%- endif -%}
+  </div>
+
+  <div class="cart-drawer__footer" data-cart-drawer-footer{% if cart.item_count == 0 %} hidden{% endif %}>
+    <div class="cart-drawer__subtotal">
+      <span>Subtotal</span>
+      <span data-cart-subtotal>{{ cart.total_price | money }}</span>
+    </div>
+    <p class="cart-drawer__note">Shipping, taxes, and discounts calculated at checkout.</p>
+    <a href="{{ routes.cart_url }}" class="btn btn-outline btn-block">View Cart</a>
+    <a href="/checkout" class="btn btn-primary btn-block">Checkout</a>
+  </div>
+</aside>
