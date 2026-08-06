@@ -212,6 +212,7 @@
           "orniva-promos-0": {
             "type": "promo",
             "settings": {
+              "image": "shopify://shop_images/ChatGPT_Image_Aug_6_2026_04_28_54_PM.png",
               "style": "dark",
               "eyebrow": "NEW ARRIVALS +",
               "heading": "Latest Designs, Just For You",
@@ -223,10 +224,11 @@
           "orniva-promos-1": {
             "type": "promo",
             "settings": {
+              "image": "shopify://shop_images/ChatGPT_Image_Aug_6_2026_04_31_46_PM.png",
               "style": "light",
               "eyebrow": "",
               "heading": "Timeless Beauty For Every Moment",
-              "discount_text": "UP TO 30% OFF",
+              "discount_text": "UP TO 50% OFF",
               "button_label": "Shop Collection",
               "button_link": ""
             }
