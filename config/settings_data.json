@@ -346,6 +346,8 @@
       "orniva-footer": {
         "type": "orniva-footer",
         "settings": {
+          "logo_image": "shopify://shop_images/ChatGPT_Image_Aug_5_2026_09_47_50_PM.png",
+          "logo_width": 260,
           "logo_text": "",
           "logo_tagline": "",
           "description": "Timeless imitation jewellery crafted to bring elegance to your everyday.",
