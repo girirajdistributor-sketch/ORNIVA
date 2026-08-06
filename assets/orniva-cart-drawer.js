@@ -134,6 +134,37 @@
     changeItem(item.dataset.cartItemKey, Math.max(0, parseInt(e.target.value, 10) || 0));
   });
 
+  // Product cards (home/collection/related products): quick-add via AJAX
+  document.addEventListener("click", (e) => {
+    const quickAddButton = e.target.closest("[data-quick-add]");
+    if (!quickAddButton) return;
+    e.preventDefault();
+    e.stopPropagation();
+    if (quickAddButton.classList.contains("is-loading")) return;
+
+    quickAddButton.classList.add("is-loading");
+
+    fetch("/cart/add.js", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({ id: quickAddButton.dataset.variantId, quantity: 1 }),
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error("quick-add failed");
+        return res.json();
+      })
+      .then(() => {
+        openDrawer();
+        return refreshDrawer();
+      })
+      .catch(() => {
+        window.location.href = "/cart";
+      })
+      .finally(() => {
+        quickAddButton.classList.remove("is-loading");
+      });
+  });
+
   // Product page: add to cart via AJAX, then open the drawer
   const addToCartForm = document.getElementById("orniva-product-form");
   if (addToCartForm) {
