@@ -82,4 +82,27 @@ document.addEventListener("DOMContentLoaded", () => {
       );
     });
   });
+
+  /* ---------- Related products ---------- */
+  document.querySelectorAll("[data-related-products]").forEach((container) => {
+    const url = container.dataset.url;
+    if (!url) return;
+
+    fetch(url)
+      .then((res) => res.text())
+      .then((html) => {
+        const doc = new DOMParser().parseFromString(html, "text/html");
+        const newTrack = doc.querySelector(".product-carousel__track");
+        const currentTrack = container.querySelector(".product-carousel__track");
+
+        if (newTrack && newTrack.children.length && currentTrack) {
+          currentTrack.innerHTML = newTrack.innerHTML;
+        } else {
+          container.hidden = true;
+        }
+      })
+      .catch(() => {
+        container.hidden = true;
+      });
+  });
 });

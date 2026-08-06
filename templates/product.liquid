@@ -142,15 +142,5 @@
     </div>
   </div>
 
-  <!-- Related products -->
-  <div class="container related-products">
-    <div class="section-heading"><h2>You May Also Like</h2></div>
-    <div class="product-carousel">
-      <div class="product-carousel__track">
-        {%- for related in product.recommendations limit: 5 -%}
-          {%- render 'orniva-product-card', product: related -%}
-        {%- endfor -%}
-      </div>
-    </div>
-  </div>
+  {% section 'orniva-related-products' %}
 </main>
