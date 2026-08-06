@@ -145,7 +145,8 @@
             "settings": {
               "collection": "",
               "title": "Necklaces",
-              "icon": "necklace"
+              "icon": "necklace",
+              "image": "shopify://shop_images/ChatGPT_Image_Aug_6_2026_03_55_55_PM.png"
             }
           },
           "orniva-categories-1": {
@@ -153,7 +154,8 @@
             "settings": {
               "collection": "",
               "title": "Earrings",
-              "icon": "earring"
+              "icon": "earring",
+              "image": "shopify://shop_images/ChatGPT_Image_Aug_6_2026_03_57_03_PM.png"
             }
           },
           "orniva-categories-2": {
@@ -161,7 +163,8 @@
             "settings": {
               "collection": "",
               "title": "Bracelets",
-              "icon": "bracelet"
+              "icon": "bracelet",
+              "image": "shopify://shop_images/ChatGPT_Image_Aug_6_2026_03_58_30_PM.png"
             }
           },
           "orniva-categories-3": {
@@ -169,7 +172,8 @@
             "settings": {
               "collection": "",
               "title": "Rings",
-              "icon": "ring"
+              "icon": "ring",
+              "image": "shopify://shop_images/ChatGPT_Image_Aug_6_2026_04_01_43_PM.png"
             }
           },
           "orniva-categories-4": {
@@ -177,7 +181,8 @@
             "settings": {
               "collection": "",
               "title": "Mangalsutra",
-              "icon": "mangalsutra"
+              "icon": "mangalsutra",
+              "image": "shopify://shop_images/ChatGPT_Image_Aug_6_2026_04_03_18_PM.png"
             }
           },
           "orniva-categories-5": {
