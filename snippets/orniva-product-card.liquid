@@ -33,6 +33,9 @@
     {%- endif -%}
   </a>
   <div class="product-card__body">
+    {%- if settings.show_promo_banner and settings.promo_banner_text != blank -%}
+      <div class="product-card__promo">{{ settings.promo_banner_text }}</div>
+    {%- endif -%}
     <h3 class="product-card__title"><a href="{{ product.url }}">{{ product.title }}</a></h3>
     <div class="product-card__price">
       <span class="price-now">{{ product.price | money }}</span>

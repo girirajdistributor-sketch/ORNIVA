@@ -9,6 +9,8 @@
  */
 {
   "current": {
+    "show_promo_banner": true,
+    "promo_banner_text": "Limited Time Offer: Get 25% Off, Automatically Applied at Checkout!",
     "logo": "shopify://shop_images/ChatGPT_Image_Aug_5_2026_03_46_22_PM.png",
     "logo_inverse": "shopify://shop_images/ChatGPT_Image_Aug_5_2026_03_46_22_PM.png",
     "logo_height": 36,
