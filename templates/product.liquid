@@ -78,6 +78,13 @@
         {%- endif -%}
       </div>
 
+      {%- if settings.show_promo_banner and settings.promo_banner_text != blank -%}
+        <div class="promo-banner">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l1.6 6.4L20 10l-6.4 1.6L12 18l-1.6-6.4L4 10l6.4-1.6Z"/></svg>
+          <span>{{ settings.promo_banner_text }}</span>
+        </div>
+      {%- endif -%}
+
       {% section 'orniva-trust-badges-top' %}
 
       {% section 'orniva-delivery-info' %}

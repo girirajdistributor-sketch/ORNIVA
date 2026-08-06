@@ -8,6 +8,27 @@
     "theme_support_url": "https://support.shopify.com/"
   },
   {
+    "name": "Promotional Banner",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Shown on the product page and inside the cart drawer. Use this to announce an active automatic discount or sale — update the text whenever your offer changes."
+      },
+      {
+        "type": "checkbox",
+        "id": "show_promo_banner",
+        "label": "Show promotional banner",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "promo_banner_text",
+        "label": "Banner text",
+        "default": "Limited time offer! Enjoy an exclusive discount, automatically applied at checkout."
+      }
+    ]
+  },
+  {
     "name": "t:names.logo_and_favicon",
     "settings": [
       {

@@ -1033,3 +1033,25 @@ div#shopify-section-orniva-header .logo img {
   height: 18px;
   stroke: var(--color-gold);
 }
+
+/* ---------- Promotional banner (product page + cart drawer) ---------- */
+.promo-banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-gold-light);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-gold-dark);
+  margin-bottom: 20px;
+}
+
+.promo-banner svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--color-gold);
+  flex-shrink: 0;
+}
