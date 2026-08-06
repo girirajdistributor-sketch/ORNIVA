@@ -119,22 +119,32 @@
   }
 
   /* Large emblem-style logo overlapping the topbar above it */
-  .logo img {
+  div#shopify-section-orniva-header .logo {
+    position: relative;
+    width: 141px;
+    display: block;
+    max-width: 224px;
+    max-height: 132px;
+    height: 35px;
+  }
+
+  div#shopify-section-orniva-header .logo img {
     display: block;
     width: auto;
     height: auto;
-    max-width: 220px;
+    max-width: 224px;
     max-height: 130px;
-    margin-top: -34px;
-    position: relative;
+    margin-top: 26px;
+    position: absolute;
+    right: 0;
+    top: -44px;
     z-index: 5;
   }
 
   @media (max-width: 560px) {
-    .logo img {
+    div#shopify-section-orniva-header .logo img {
       max-width: 140px;
       max-height: 84px;
-      margin-top: -22px;
     }
   }
 {% endstylesheet %}
