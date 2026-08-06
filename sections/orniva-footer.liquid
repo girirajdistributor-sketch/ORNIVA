@@ -1,15 +1,25 @@
 {%- liquid
   assign quick_links_handle = section.settings.quick_links_menu
   assign service_links_handle = section.settings.service_links_menu
+  assign logo_image = section.settings.logo_image | default: settings.logo
 -%}
 
 <footer class="site-footer">
   <div class="container site-footer__top">
     <div class="footer-brand">
       <div class="logo">
-        <span class="logo__mark">{{ section.settings.logo_text }}</span>
-        {%- if section.settings.logo_tagline != blank -%}
-          <span class="logo__tagline">{{ section.settings.logo_tagline }}</span>
+        {%- if logo_image != blank -%}
+          <img
+            src="{{ logo_image | image_url: width: section.settings.logo_width }}"
+            alt="{{ section.settings.logo_text | default: shop.name | escape }}"
+            width="{{ section.settings.logo_width }}"
+            height="{{ section.settings.logo_width | divided_by: logo_image.aspect_ratio | default: section.settings.logo_width }}"
+          >
+        {%- else -%}
+          <span class="logo__mark">{{ section.settings.logo_text }}</span>
+          {%- if section.settings.logo_tagline != blank -%}
+            <span class="logo__tagline">{{ section.settings.logo_tagline }}</span>
+          {%- endif -%}
         {%- endif -%}
       </div>
       {%- if section.settings.description != blank -%}
@@ -77,13 +87,25 @@
   </div>
 </footer>
 
+{% stylesheet %}
+  .footer-brand .logo img {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 160px;
+    max-height: 56px;
+  }
+{% endstylesheet %}
+
 {% schema %}
 {
   "name": "Orniva Footer",
   "settings": [
     { "type": "header", "content": "Brand" },
-    { "type": "text", "id": "logo_text", "label": "Logo text", "default": "ORNIVA" },
-    { "type": "text", "id": "logo_tagline", "label": "Logo tagline", "default": "Shine Every Day" },
+    { "type": "image_picker", "id": "logo_image", "label": "Logo image", "info": "Optional. Overrides your theme settings logo below. Leave blank to use that instead." },
+    { "type": "range", "id": "logo_width", "label": "Logo image width", "min": 60, "max": 260, "step": 10, "default": 160, "unit": "px", "visible_if": "{{ section.settings.logo_image != blank or settings.logo != blank }}" },
+    { "type": "text", "id": "logo_text", "label": "Logo text", "default": "ORNIVA", "visible_if": "{{ section.settings.logo_image == blank and settings.logo == blank }}" },
+    { "type": "text", "id": "logo_tagline", "label": "Logo tagline", "default": "Shine Every Day", "visible_if": "{{ section.settings.logo_image == blank and settings.logo == blank }}" },
     { "type": "textarea", "id": "description", "label": "Description", "default": "Timeless imitation jewellery crafted to bring elegance to your everyday." },
 
     { "type": "header", "content": "Social links" },

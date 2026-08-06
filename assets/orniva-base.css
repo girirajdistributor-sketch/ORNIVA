@@ -263,7 +263,7 @@ h4 {
   justify-content: center;
 }
 
-.logo img {
+.site-header .logo img {
   display: block;
   width: auto;
   height: auto;
@@ -424,7 +424,7 @@ h4 {
   .logo__mark {
     font-size: 1.25rem;
   }
-  .logo img {
+  .site-header .logo img {
     max-width: 140px;
     max-height: 84px;
     margin-top: -22px;
@@ -783,6 +783,14 @@ h4 {
 
 .footer-brand .logo__tagline {
   color: #a79e92;
+}
+
+.footer-brand .logo img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 160px;
+  max-height: 56px;
 }
 
 .footer-brand p {
