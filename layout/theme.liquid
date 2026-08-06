@@ -19,7 +19,7 @@
 {%- if template.name == 'index' %}
 {{ 'orniva-home.css' | asset_url | stylesheet_tag }}
 {%- endif %}
-{%- if template.name == 'collection' %}
+{%- if template.name == 'collection' or template.name == 'search' %}
 {{ 'orniva-necklaces.css' | asset_url | stylesheet_tag }}
 {%- endif %}
 {%- if template.name == 'product' %}

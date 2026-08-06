@@ -89,9 +89,21 @@
 
     <div class="header-icons">
       {%- if section.settings.show_search -%}
-        <a href="{{ routes.search_url }}" aria-label="Search">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        </a>
+        <div class="header-search">
+          <button type="button" class="header-search__toggle" aria-label="Search" aria-expanded="false" data-search-toggle>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </button>
+          <div class="header-search__panel" data-search-panel hidden>
+            <form action="{{ routes.search_url }}" method="get" role="search" class="header-search__form">
+              <input type="hidden" name="type" value="product">
+              <label for="header-search-input" class="visually-hidden">Search products</label>
+              <input type="search" id="header-search-input" name="q" value="{{ search.terms }}" placeholder="Search products&hellip;" autocomplete="off" data-search-input>
+              <button type="submit" aria-label="Submit search">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              </button>
+            </form>
+          </div>
+        </div>
       {%- endif -%}
       {%- if section.settings.show_account -%}
         <a href="{{ routes.account_url }}" aria-label="Account">
@@ -146,6 +158,69 @@
       max-width: 140px;
       max-height: 84px;
     }
+  }
+
+  /* Header search dropdown */
+  .header-search {
+    position: relative;
+    display: flex;
+  }
+
+  .header-search__panel {
+    position: absolute;
+    top: calc(100% + 14px);
+    right: 0;
+    width: min(320px, 90vw);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card-hover);
+    padding: 10px;
+    z-index: 60;
+  }
+
+  .header-search__panel[hidden] {
+    display: none;
+  }
+
+  .header-search__form {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .header-search__form input[type="search"] {
+    flex: 1;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: 10px 12px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    background: var(--color-bg);
+  }
+
+  .header-search__form input[type="search"]:focus {
+    outline: none;
+    border-color: var(--color-gold);
+  }
+
+  .header-search__form button[type="submit"] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    color: var(--color-text-light);
+  }
+
+  .header-search__form button[type="submit"]:hover {
+    color: var(--color-gold);
+  }
+
+  .header-search__form button[type="submit"] svg {
+    width: 18px;
+    height: 18px;
   }
 {% endstylesheet %}
 

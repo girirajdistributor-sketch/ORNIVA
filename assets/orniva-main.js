@@ -43,4 +43,30 @@ document.addEventListener("DOMContentLoaded", () => {
       productGrid?.classList.toggle("is-list-view", index === 1);
     });
   });
+
+  const searchToggle = document.querySelector("[data-search-toggle]");
+  const searchPanel = document.querySelector("[data-search-panel]");
+  const searchInput = document.querySelector("[data-search-input]");
+
+  const closeSearch = () => {
+    if (!searchPanel || searchPanel.hidden) return;
+    searchPanel.hidden = true;
+    searchToggle?.setAttribute("aria-expanded", "false");
+  };
+
+  searchToggle?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const isOpen = searchPanel?.hidden === false;
+    if (searchPanel) searchPanel.hidden = isOpen;
+    searchToggle.setAttribute("aria-expanded", String(!isOpen));
+    if (!isOpen) searchInput?.focus();
+  });
+
+  searchPanel?.addEventListener("click", (e) => e.stopPropagation());
+
+  document.addEventListener("click", closeSearch);
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeSearch();
+  });
 });
