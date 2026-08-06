@@ -218,7 +218,7 @@
               "heading": "Latest Designs, Just For You",
               "discount_text": "",
               "button_label": "Explore Now",
-              "button_link": ""
+              "button_link": "shopify://collections"
             }
           },
           "orniva-promos-1": {
@@ -230,7 +230,7 @@
               "heading": "Timeless Beauty For Every Moment",
               "discount_text": "UP TO 50% OFF",
               "button_label": "Shop Collection",
-              "button_link": ""
+              "button_link": "shopify://collections"
             }
           }
         },
@@ -367,7 +367,7 @@
           "quick_links_title": "Quick Links",
           "quick_links_menu": "",
           "service_links_title": "Customer Service",
-          "service_links_menu": "",
+          "service_links_menu": "foofter2",
           "newsletter_heading": "Newsletter",
           "newsletter_subtext": "Subscribe to get special offers, free giveaways and once-in-a-lifetime deals.",
           "copyright_text": "Orniva Jewels. All Rights Reserved."
