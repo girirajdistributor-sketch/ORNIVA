@@ -823,6 +823,27 @@ div#shopify-section-orniva-header .logo img {
   }
 }
 
+@media (max-width: 767px) {
+  .newsletter__form {
+    display: flex;
+    flex: 1;
+    max-width: 420px;
+    flex-wrap: wrap;
+    min-width: 260px;
+  }
+  .newsletter__form button {
+    padding-inline: 22px;
+    background: var(--color-gold);
+    width: 100%;
+    padding: 12px;
+    margin-top: 11px;
+    color: #fff;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    font-weight: 600;
+    transition: var(--transition);
+  }
+}
+
 /* ---------- Footer ---------- */
 .site-footer {
   background: var(--color-black);
