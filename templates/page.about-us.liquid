@@ -1,0 +1,185 @@
+<!-- ========================= Breadcrumb ========================= -->
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <div class="container">
+    <ol>
+      <li><a href="{{ routes.root_url }}">Home</a></li>
+      <li>&rsaquo;</li>
+      <li aria-current="page">{{ page.title }}</li>
+    </ol>
+  </div>
+</nav>
+
+<!-- ========================= Our story ========================= -->
+<section class="about-page__story">
+  <div class="container about-page__story-inner">
+    <div class="about-page__media ph-img">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4c0 6 3.5 10 8 10s8-4 8-10"/><circle cx="12" cy="17" r="3"/></svg>
+    </div>
+    <div class="about-page__copy">
+      <span class="about-page__eyebrow">&#10022; OUR STORY &#10022;</span>
+      <h1>{{ page.title | default: 'About Orniva' }}</h1>
+      {%- if page.content != blank -%}
+        <div class="about-page__content">{{ page.content }}</div>
+      {%- else -%}
+        <p>Orniva Jewels was born from a simple belief &mdash; that elegance shouldn't come with a compromise. We design timeless imitation jewellery that captures the sparkle of fine jewellery, without the price tag, so you can shine every single day.</p>
+        <p>Every piece is crafted with care, finished by hand, and quality-checked before it reaches you. From everyday essentials to statement pieces for weddings and festivities, our collections are made for the modern woman who wants to feel beautiful, effortlessly.</p>
+      {%- endif -%}
+      <a href="{{ routes.all_products_collection_url }}" class="btn btn-primary">Shop Our Collection</a>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= Why choose us ========================= -->
+<section class="about-page__values">
+  <div class="container">
+    <div class="section-heading"><h2>What Makes Us Different</h2></div>
+    <div class="about-page__values-grid">
+      <div class="about-page__value">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l4 6-10 12L2 9Z"/><path d="M2 9h20"/><path d="M8 9l4 12 4-12"/></svg>
+        <h4>Premium Quality</h4>
+        <p>Carefully selected materials and gold-plated finishes for a luxurious feel that lasts.</p>
+      </div>
+      <div class="about-page__value">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l1.6 6.4L20 10l-6.4 1.6L12 18l-1.6-6.4L4 10l6.4-1.6Z"/></svg>
+        <h4>Tarnish Free</h4>
+        <p>Advanced coating technology keeps every piece shining, wear after wear.</p>
+      </div>
+      <div class="about-page__value">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2s7 8 7 13a7 7 0 1 1-14 0c0-5 7-13 7-13Z"/></svg>
+        <h4>Skin Friendly</h4>
+        <p>Nickel-free and hypoallergenic, so you can wear it all day, every day.</p>
+      </div>
+      <div class="about-page__value">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+        <h4>Trusted by Thousands</h4>
+        <p>Loved by happy customers across India who shine with us every day.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= Call to action ========================= -->
+<section class="about-page__cta">
+  <div class="container about-page__cta-inner">
+    <h2>Ready To Shine?</h2>
+    <p>Explore our latest collections and find the perfect piece for every occasion.</p>
+    <a href="{{ routes.all_products_collection_url }}" class="btn btn-dark">Shop Now</a>
+  </div>
+</section>
+
+<style>
+  .about-page__story {
+    padding-block: 40px 60px;
+  }
+
+  .about-page__story-inner {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .about-page__media {
+    aspect-ratio: 4 / 5;
+    border-radius: var(--radius-lg);
+  }
+
+  .about-page__media svg {
+    width: 30%;
+    height: 30%;
+  }
+
+  .about-page__eyebrow {
+    display: block;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: var(--color-gold);
+    margin-bottom: 14px;
+  }
+
+  .about-page__copy h1 {
+    font-size: 2.4rem;
+    margin-bottom: 18px;
+  }
+
+  .about-page__copy p,
+  .about-page__content {
+    color: var(--color-text-light);
+    margin-bottom: 16px;
+    line-height: 1.7;
+  }
+
+  .about-page__copy .btn {
+    margin-top: 10px;
+  }
+
+  .about-page__values {
+    padding-block: 60px;
+    background: var(--color-bg-alt);
+  }
+
+  .about-page__values-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    text-align: center;
+  }
+
+  .about-page__value svg {
+    width: 36px;
+    height: 36px;
+    stroke: var(--color-gold);
+    margin-bottom: 14px;
+  }
+
+  .about-page__value h4 {
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+
+  .about-page__value p {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+  }
+
+  .about-page__cta {
+    padding-block: 60px;
+    text-align: center;
+  }
+
+  .about-page__cta-inner {
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .about-page__cta h2 {
+    font-size: 1.8rem;
+    margin-bottom: 12px;
+  }
+
+  .about-page__cta p {
+    color: var(--color-text-light);
+    margin-bottom: 24px;
+  }
+
+  @media (max-width: 768px) {
+    .about-page__story-inner {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    .about-page__values-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .about-page__copy h1 {
+      font-size: 1.9rem;
+    }
+
+    .about-page__values-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
