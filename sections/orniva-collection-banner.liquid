@@ -1,0 +1,39 @@
+{%- liquid
+  assign banner_image = section.settings.banner_image | default: collection.image
+-%}
+
+<!-- ========================= Page banner ========================= -->
+<section class="page-banner{% if banner_image != blank %} page-banner--has-image{% endif %}">
+  {%- if banner_image != blank -%}
+    <div class="page-banner__bg">
+      <img
+        src="{{ banner_image | image_url: width: 1600 }}"
+        alt="{{ collection.title | escape }}"
+        width="1600"
+        height="{{ 1600 | divided_by: banner_image.aspect_ratio | default: 500 }}"
+        loading="eager"
+      >
+    </div>
+  {%- endif -%}
+  <div class="container page-banner__inner">
+    <div class="page-banner__copy">
+      <h1>{{ collection.title }}</h1>
+      <p>{% if collection.description != blank %}{{ collection.description }}{% else %}Timeless elegance in every design. Find the perfect necklace for every you.{% endif %}</p>
+      <div class="page-banner__rule"></div>
+    </div>
+    {%- if banner_image == blank -%}
+      <div class="page-banner__media ph-img">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4c0 6 3.5 10 8 10s8-4 8-10"/><circle cx="12" cy="17" r="3"/></svg>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Orniva Collection Banner",
+  "settings": [
+    { "type": "image_picker", "id": "banner_image", "label": "Banner background image", "info": "Optional. Falls back to the collection's own image (set in Admin) when blank, then a decorative placeholder." }
+  ]
+}
+{% endschema %}

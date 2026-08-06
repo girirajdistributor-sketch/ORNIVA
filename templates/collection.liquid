@@ -9,19 +9,7 @@
   </div>
 </nav>
 
-<!-- ========================= Page banner ========================= -->
-<section class="page-banner">
-  <div class="container page-banner__inner">
-    <div class="page-banner__copy">
-      <h1>{{ collection.title }}</h1>
-      <p>{% if collection.description != blank %}{{ collection.description }}{% else %}Timeless elegance in every design. Find the perfect necklace for every you.{% endif %}</p>
-      <div class="page-banner__rule"></div>
-    </div>
-    <div class="page-banner__media ph-img">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4c0 6 3.5 10 8 10s8-4 8-10"/><circle cx="12" cy="17" r="3"/></svg>
-    </div>
-  </div>
-</section>
+{% section 'orniva-collection-banner' %}
 
 <!-- ========================= Listing ========================= -->
 <section class="listing">
