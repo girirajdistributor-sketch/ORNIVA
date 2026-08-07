@@ -303,6 +303,7 @@
         "type": "orniva-instagram",
         "settings": {
           "heading": "Explore @orniva.jewels",
+          "juicer_feed_id": "orniva_jewellerys",
           "button_label": "Follow Us On Instagram",
           "button_link": "https://www.instagram.com/orniva_jewellerys/"
         }
@@ -369,6 +370,11 @@
       },
       "1232542678405107163": {
         "type": "shopify://apps/instafeed/blocks/head-block/c447db20-095d-4a10-9725-b5977662c9d5",
+        "disabled": false,
+        "settings": {}
+      },
+      "14494032640169117832": {
+        "type": "shopify://apps/instagram-shop-ai/blocks/app-embed/8af8f5ee-21cb-48a3-80e7-13a99e2519b5",
         "disabled": false,
         "settings": {}
       }
