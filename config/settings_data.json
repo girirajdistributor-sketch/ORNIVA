@@ -405,6 +405,11 @@
           "agent_activator_font_size": 14,
           "agent_border_radius": 14
         }
+      },
+      "1232542678405107163": {
+        "type": "shopify://apps/instafeed/blocks/head-block/c447db20-095d-4a10-9725-b5977662c9d5",
+        "disabled": false,
+        "settings": {}
       }
     },
     "color_palette": {
