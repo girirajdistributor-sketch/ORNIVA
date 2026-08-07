@@ -301,45 +301,8 @@
       },
       "orniva-instagram": {
         "type": "orniva-instagram",
-        "blocks": {
-          "orniva-instagram-0": {
-            "type": "photo",
-            "settings": {
-              "style": "soft"
-            }
-          },
-          "orniva-instagram-1": {
-            "type": "photo",
-            "settings": {
-              "style": "none"
-            }
-          },
-          "orniva-instagram-2": {
-            "type": "photo",
-            "settings": {
-              "style": "dark"
-            }
-          },
-          "orniva-instagram-3": {
-            "type": "photo",
-            "settings": {
-              "style": "soft"
-            }
-          },
-          "orniva-instagram-4": {
-            "type": "photo",
-            "settings": {
-              "style": "none"
-            }
-          }
-        },
-        "block_order": [
-          "orniva-instagram-0",
-          "orniva-instagram-1",
-          "orniva-instagram-2",
-          "orniva-instagram-3",
-          "orniva-instagram-4"
-        ],
+        "blocks": {},
+        "block_order": [],
         "settings": {
           "heading": "Explore @orniva.jewels",
           "button_label": "Follow Us On Instagram",

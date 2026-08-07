@@ -337,53 +337,8 @@
   }
 }
 
-/* ---------- Instagram grid ---------- */
+/* ---------- Instagram feed (app block) ---------- */
 .instagram {
   padding-block: 60px 50px;
   text-align: center;
-}
-
-.instagram__grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 18px;
-  margin-bottom: 32px;
-}
-
-.instagram-item {
-  position: relative;
-  aspect-ratio: 1 / 1;
-  border-radius: var(--radius-md);
-  overflow: hidden;
-}
-
-.instagram-item__wishlist {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.9);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.instagram-item__wishlist svg {
-  width: 14px;
-  height: 14px;
-  stroke: var(--color-black);
-}
-
-@media (max-width: 900px) {
-  .instagram__grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 560px) {
-  .instagram__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
