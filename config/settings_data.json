@@ -336,6 +336,16 @@
           "newsletter_subtext": "Subscribe to get special offers, free giveaways and once-in-a-lifetime deals.",
           "copyright_text": "Orniva Jewels. All Rights Reserved."
         }
+      },
+      "orniva-welcome-popup": {
+        "type": "orniva-welcome-popup",
+        "settings": {
+          "enable": true,
+          "image": "shopify://shop_images/Gemini_Generated_Image_h8wzehh8wzehh8wz.png",
+          "heading": "Special Welcome Offer",
+          "link": "",
+          "delay_seconds": 2
+        }
       }
     },
     "content_for_index": [],
