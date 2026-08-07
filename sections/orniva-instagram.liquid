@@ -1,13 +1,13 @@
-<!-- ========================= Instagram feed (app block) ========================= -->
+<!-- ========================= Instagram feed (Juicer.io) ========================= -->
 <section class="instagram">
   <div class="container">
     {%- if section.settings.heading != blank -%}
       <div class="section-heading"><h2>{{ section.settings.heading }}</h2></div>
     {%- endif -%}
 
-    {%- for block in section.blocks -%}
-      {%- render block -%}
-    {%- endfor -%}
+    {%- if section.settings.juicer_feed_id != blank -%}
+      <ul class="juicer-feed" data-feed-id="{{ section.settings.juicer_feed_id }}"></ul>
+    {%- endif -%}
 
     {%- if section.settings.button_label != blank -%}
       <a href="{{ section.settings.button_link | default: '#' }}" class="btn btn-outline">
@@ -18,17 +18,58 @@
   </div>
 </section>
 
+{%- if section.settings.juicer_feed_id != blank -%}
+  <script type="text/javascript" src="https://www.juicer.io/embed/{{ section.settings.juicer_feed_id }}/embed-code.js" async defer></script>
+{%- endif -%}
+
+{% stylesheet %}
+  .juicer-feed {
+    margin-bottom: 32px;
+  }
+
+  .juicer-feed.slick-slider {
+    margin-bottom: 32px;
+  }
+
+  .juicer-feed ul.j-lazy,
+  .juicer-feed .referral {
+    display: none !important;
+  }
+
+  .juicer-feed .j-poster {
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    transition: var(--transition);
+  }
+
+  .juicer-feed .j-poster:hover {
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-4px);
+  }
+
+  .juicer-feed .j-message {
+    border-radius: var(--radius-md);
+  }
+
+  .juicer-feed .j-meta,
+  .juicer-feed .j-caption {
+    font-family: var(--font-sans);
+  }
+
+  .juicer-feed h1.referral {
+    display: none !important;
+  }
+{% endstylesheet %}
+
 {% schema %}
 {
   "name": "Orniva Instagram",
   "settings": [
-    { "type": "text", "id": "heading", "label": "Heading", "default": "Explore @orniva.jewels", "info": "Leave blank if your Instagram app block already shows its own heading." },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Explore @orniva.jewels" },
+    { "type": "text", "id": "juicer_feed_id", "label": "Juicer feed ID", "default": "orniva_jewellerys", "info": "From your Juicer embed URL: juicer.io/embed/[this-part]/embed-code.js" },
     { "type": "text", "id": "button_label", "label": "Button label", "default": "Follow Us On Instagram" },
     { "type": "url", "id": "button_link", "label": "Button link", "info": "Link to your Instagram profile." }
-  ],
-  "blocks": [
-    { "type": "@app" }
-  ],
-  "max_blocks": 2
+  ]
 }
 {% endschema %}
