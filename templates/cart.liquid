@@ -92,6 +92,21 @@
                 <span>&minus;{{ cart.total_discount | money }}</span>
               </div>
             {%- endif -%}
+
+            {%- if cart.cart_level_discount_applications.size > 0 -%}
+              <div class="cart-page__discount-applied">
+                {%- for discount in cart.cart_level_discount_applications -%}
+                  <span>&#10003; &ldquo;{{ discount.title }}&rdquo; applied</span>
+                {%- endfor -%}
+              </div>
+            {%- else -%}
+              <div class="cart-page__discount">
+                <label for="discount-code" class="visually-hidden">Discount code</label>
+                <input type="text" id="discount-code" placeholder="Discount code" autocomplete="off" data-discount-input>
+                <button type="button" class="btn btn-outline" data-discount-apply>Apply</button>
+              </div>
+            {%- endif -%}
+
             <p class="cart-page__summary-note">Shipping, taxes, and discounts calculated at checkout.</p>
 
             <label for="cart-note" class="cart-page__note-label">Order note</label>
@@ -320,6 +335,41 @@
     color: var(--color-success);
   }
 
+  .cart-page__discount {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .cart-page__discount input {
+    flex: 1;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: 10px 12px;
+    font-family: inherit;
+    font-size: 0.85rem;
+    background: var(--color-surface);
+  }
+
+  .cart-page__discount input:focus {
+    outline: none;
+    border-color: var(--color-gold);
+  }
+
+  .cart-page__discount-applied {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-success);
+    border-radius: var(--radius-sm);
+    padding: 10px 12px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--color-success);
+    margin-bottom: 16px;
+  }
+
   .cart-page__summary-note {
     font-size: 0.78rem;
     color: var(--color-text-light);
@@ -416,6 +466,23 @@
       increaseBtn?.addEventListener("click", () => {
         input.value = parseInt(input.value, 10) + 1;
       });
+    });
+
+    const discountInput = document.querySelector("[data-discount-input]");
+    const discountApply = document.querySelector("[data-discount-apply]");
+
+    const applyDiscount = () => {
+      const code = discountInput?.value.trim();
+      if (!code) return;
+      window.location.href = `/discount/${encodeURIComponent(code)}?redirect=${encodeURIComponent(window.location.pathname)}`;
+    };
+
+    discountApply?.addEventListener("click", applyDiscount);
+    discountInput?.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        applyDiscount();
+      }
     });
   });
 </script>
