@@ -29,7 +29,13 @@
               {%- unless item.variant.title == 'Default Title' -%}
                 <div class="cart-drawer__item-variant">{{ item.variant.title }}</div>
               {%- endunless -%}
-              <div class="cart-drawer__item-price">{{ item.final_price | money }}</div>
+              <div class="cart-drawer__item-price">
+                <span class="price-now">{{ item.final_price | money }}</span>
+                {%- if item.variant.compare_at_price > item.variant.price -%}
+                  <span class="price-old">{{ item.variant.compare_at_price | money }}</span>
+                  <span class="cart-drawer__item-discount">{{ item.variant.compare_at_price | minus: item.variant.price | times: 100.0 | divided_by: item.variant.compare_at_price | round }}% OFF</span>
+                {%- endif -%}
+              </div>
               <div class="cart-drawer__item-controls">
                 <div class="cart-drawer__qty-stepper">
                   <button type="button" data-cart-qty-decrease aria-label="Decrease quantity">&minus;</button>

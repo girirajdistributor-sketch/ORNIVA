@@ -39,6 +39,13 @@
     const imageMarkup = item.image
       ? `<img src="${item.image}&width=160" alt="${(item.product_title || "").replace(/"/g, "&quot;")}" width="80" height="80" loading="lazy">`
       : "";
+    const compareAtPrice = item.compare_at_price;
+    const discountMarkup =
+      compareAtPrice > item.final_price
+        ? `<span class="price-old">${formatMoney(compareAtPrice)}</span><span class="cart-drawer__item-discount">${Math.round(
+            ((compareAtPrice - item.final_price) / compareAtPrice) * 100
+          )}% OFF</span>`
+        : "";
 
     return `
       <li class="cart-drawer__item" data-cart-item-key="${item.key}">
@@ -46,7 +53,7 @@
         <div class="cart-drawer__item-info">
           <a href="${item.url}" class="cart-drawer__item-title">${item.product_title}</a>
           ${variantLine}
-          <div class="cart-drawer__item-price">${formatMoney(item.final_price)}</div>
+          <div class="cart-drawer__item-price"><span class="price-now">${formatMoney(item.final_price)}</span>${discountMarkup}</div>
           <div class="cart-drawer__item-controls">
             <div class="cart-drawer__qty-stepper">
               <button type="button" data-cart-qty-decrease aria-label="Decrease quantity">&minus;</button>

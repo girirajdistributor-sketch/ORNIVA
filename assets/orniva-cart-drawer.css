@@ -108,9 +108,26 @@
 }
 
 .cart-drawer__item-price {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 6px;
   font-weight: 600;
   font-size: 0.88rem;
   margin-bottom: 10px;
+}
+
+.cart-drawer__item-price .price-old {
+  font-size: 0.76rem;
+  font-weight: 400;
+  color: var(--color-text-muted);
+  text-decoration: line-through;
+}
+
+.cart-drawer__item-discount {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--color-sale);
 }
 
 .cart-drawer__item-controls {
