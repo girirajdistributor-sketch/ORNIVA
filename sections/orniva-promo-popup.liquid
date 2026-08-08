@@ -1,0 +1,139 @@
+{%- if section.settings.enable and section.settings.image != blank -%}
+  <div class="welcome-popup-overlay" data-promo-popup-overlay hidden>
+    <div class="welcome-popup" role="dialog" aria-modal="true" aria-label="{{ section.settings.heading | default: 'Special offer' }}">
+      <button type="button" class="welcome-popup__close" aria-label="Close" data-promo-popup-close>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <a href="{{ section.settings.link | default: routes.all_products_collection_url }}" class="welcome-popup__image-link">
+        <img
+          src="{{ section.settings.image | image_url: width: 800 }}"
+          alt="{{ section.settings.heading | default: 'Special offer' | escape }}"
+          width="800"
+          height="{{ 800 | divided_by: section.settings.image.aspect_ratio | default: 800 }}"
+        >
+      </a>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var STORAGE_KEY = "orniva-promo-popup-dismissed";
+      if (localStorage.getItem(STORAGE_KEY)) return;
+
+      var overlay = document.querySelector("[data-promo-popup-overlay]");
+      var closeBtn = document.querySelector("[data-promo-popup-close]");
+      if (!overlay || !closeBtn) return;
+
+      var delay = {{ section.settings.delay_seconds | default: 2 }} * 1000;
+      var timer = null;
+
+      var dismiss = function () {
+        overlay.hidden = true;
+        document.body.style.overflow = "";
+        localStorage.setItem(STORAGE_KEY, "true");
+        if (timer) clearTimeout(timer);
+      };
+
+      timer = setTimeout(function () {
+        overlay.hidden = false;
+        document.body.style.overflow = "hidden";
+      }, delay);
+
+      closeBtn.addEventListener("click", dismiss);
+
+      overlay.addEventListener("click", function (e) {
+        if (e.target === overlay) dismiss();
+      });
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && !overlay.hidden) dismiss();
+      });
+    })();
+  </script>
+{%- endif -%}
+
+{% stylesheet %}
+  .welcome-popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .welcome-popup-overlay[hidden] {
+    display: none;
+  }
+
+  .welcome-popup {
+    position: relative;
+    max-width: 420px;
+    width: 100%;
+    animation: welcomePopupIn 0.3s ease;
+  }
+
+  @keyframes welcomePopupIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .welcome-popup__image-link {
+    display: block;
+  }
+
+  .welcome-popup__image-link img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg);
+    display: block;
+  }
+
+  .welcome-popup__close {
+    position: absolute;
+    top: -14px;
+    right: -14px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #fff;
+    color: var(--color-black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-card-hover);
+    z-index: 2;
+  }
+
+  .welcome-popup__close svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  @media (max-width: 480px) {
+    .welcome-popup {
+      max-width: 320px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Orniva Promo Popup",
+  "settings": [
+    { "type": "checkbox", "id": "enable", "label": "Enable this popup", "default": false },
+    { "type": "image_picker", "id": "image", "label": "Popup image", "info": "Upload your promo graphic here." },
+    { "type": "text", "id": "heading", "label": "Accessible label", "default": "Special Offer", "info": "Used for screen readers, not shown visually." },
+    { "type": "url", "id": "link", "label": "Link", "info": "Where clicking the image goes — pick a specific product, collection, or any URL. Defaults to all products." },
+    { "type": "range", "id": "delay_seconds", "label": "Show after (seconds)", "min": 0, "max": 10, "step": 1, "default": 2 }
+  ]
+}
+{% endschema %}
