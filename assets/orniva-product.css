@@ -219,6 +219,14 @@
   margin-top: 2px;
 }
 
+.info-box--cod {
+  border-color: var(--color-success);
+}
+
+.info-box--cod svg {
+  stroke: var(--color-success);
+}
+
 .offer-box {
   display: flex;
   align-items: center;
