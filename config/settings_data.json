@@ -346,6 +346,16 @@
           "link": "",
           "delay_seconds": 2
         }
+      },
+      "orniva-promo-popup": {
+        "type": "orniva-promo-popup",
+        "settings": {
+          "enable": true,
+          "image": "shopify://shop_images/Gemini_Generated_Image_z9uahoz9uahoz9ua.png",
+          "heading": "Special Offer",
+          "link": "shopify://products/✨-dont-own-environment-choose-conscious-luxury-✨",
+          "delay_seconds": 2
+        }
       }
     },
     "content_for_index": [],
